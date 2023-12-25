@@ -2,11 +2,12 @@
   import "$/app.css";
   import Heading from "$/components/base/heading.svelte";
   import BasicTable from "$/components/table/basicTable.svelte";
-  export let data;
+  import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
+  export let data: { pokemonList: PokemonSpecies[] };
 
   type HeaderData = {
     label: string;
-    key: keyof typeof data.pokemonList[0];
+    key: keyof PokemonSpecies;
   };
 
   let headers: HeaderData[] = [
