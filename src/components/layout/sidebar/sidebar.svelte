@@ -3,7 +3,7 @@
   export let items: SidebarItem[];
 </script>
 
-<nav class="flex flex-col bg-slate-600 w-72">
+<nav class="flex flex-col bg-slate-600 w-64">
   {#each items as item}
     {#if 'target' in item}
       {@const linkItem = item}
