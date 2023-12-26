@@ -1,5 +1,4 @@
 <script lang="ts" generics="T">
-  import "$/app.css";
   type HeaderValue = {
     label: string;
     key: keyof T;

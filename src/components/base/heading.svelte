@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '$/app.css';
   type HeadingLevel = 1 | 2 | 3;
   export let level: HeadingLevel = 1;
 </script>
