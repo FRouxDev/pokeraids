@@ -4,11 +4,12 @@
   import TypeChip from "$/components/base/typeChip.svelte";
   import RoleChip from "$/components/base/roleChip.svelte";
   import { Role } from "$/shared/types/role.type";
+  import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   export let data: PokemonSpecies;
 </script>
 
-<div class="flex flex-col">
+<PageLayout>
   <Heading>{data.nameFr}</Heading>
   <p>Le type de {data.nameFr} est <TypeChip pokemonType={data.type1} /></p>
   <p>Role : <RoleChip label={Role.ATTACKER} /></p>
-</div>
+</PageLayout>

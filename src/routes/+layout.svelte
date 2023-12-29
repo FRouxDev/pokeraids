@@ -1,12 +1,14 @@
 <script lang="ts">
   import '$/app.css';
+  import Footer from '$/components/layout/footer/footer.svelte';
   import Navbar from '$/components/layout/navbar/navbar.svelte';
   import { pagesItems } from './appNav';
 </script>
-<div class="bg-slate-900 h-screen">
-  <div class="w-2/3 bg-slate-800 text-slate-100 m-auto h-screen">
+<div class="bg-gray-900">
+  <div class="w-2/3 bg-gray-800 text-gray-100 m-auto min-h-screen flex flex-col">
     <Navbar items={pagesItems} />
-    <slot></slot>
+    <main class="grow"><slot></slot></main>
+    <Footer />
   </div>
 </div>
 

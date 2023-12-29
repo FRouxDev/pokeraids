@@ -1,8 +1,13 @@
 <script lang="ts" generics="T">
+  import { linear } from "svelte/easing";
+  import FooterLink from "../layout/footer/footerLink.svelte";
+
   type HeaderValue = {
     label: string;
     key: keyof T;
-  };
+    linkId?: keyof T;
+    linkParent?: string;
+   };
   export let headers: HeaderValue[];
   export let rows: T[]; 
 </script>
@@ -16,7 +21,11 @@
   {#each rows as row}
     <tr>
       {#each headers as header}
-        <td>{row[header.key]}</td>
+        {#if header.linkId}
+          <td><FooterLink href={`${header.linkParent || ''}/${row[header.linkId]}`} label={`${row[header.key]}`} /></td>
+        {:else}
+          <td>{row[header.key]}</td>
+        {/if}
       {/each}
     </tr>
   {/each}
