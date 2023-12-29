@@ -6,8 +6,12 @@ export const pagesItems: NavbarItem[] = [
     label: 'Accueil',
   },
   {
-    path: '/builds',
+    path: '/raid-builds',
     label: 'Builds de raids',
+  },
+  {
+    path: '/events',
+    label: 'Événements',
   },
   {
     path: '/pokedex',
