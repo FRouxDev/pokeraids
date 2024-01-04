@@ -5,7 +5,8 @@
     "nameEn": "Annihilape",
     "type1": "Spectre",
     "type2": "Combat",
-    "picture": "courroussinge.png"
+    "picture": "courroussinge.png",
+    "origin": "Paldea"
   },
   {
     "id": "miraidon",
@@ -13,7 +14,8 @@
     "nameEn": "Miraidon",
     "type1": "Dragon",
     "type2": "Électrik",
-    "picture": "miraidon.png"
+    "picture": "miraidon.png",
+    "origin": "Paldea"
   },
   {
     "id": "paume-de-fer",
@@ -21,6 +23,7 @@
     "nameEn": "Iron Hands",
     "type1": "Combat",
     "type2": "Électrik",
-    "picture": "paume-de-fer.png"
+    "picture": "paume-de-fer.png",
+    "origin": "Paldea"
   }
 ]

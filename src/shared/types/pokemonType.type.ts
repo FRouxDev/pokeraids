@@ -18,3 +18,9 @@ export enum PokemonType {
   DARK = 'Ténèbres',
   NORMAL = 'Normal',
 }
+
+export const isStringPokemonType = (str: string | unknown): str is PokemonType => {
+  if (typeof str !== 'string') return false;
+  const pokemonTypes = Object.values(PokemonType) as string[];
+  return pokemonTypes.includes(str);
+};

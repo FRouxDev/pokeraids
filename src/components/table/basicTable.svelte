@@ -1,15 +1,18 @@
 <script lang="ts" generics="T">
-  import { linear } from "svelte/easing";
   import FooterLink from "../layout/footer/footerLink.svelte";
+  import TypeChip from "../base/typeChip.svelte";
+  import { isStringPokemonType } from "$/shared/types/pokemonType.type";
 
   type HeaderValue = {
     label: string;
     key: keyof T;
     linkId?: keyof T;
     linkParent?: string;
+    formatter?: 'typeChip';
    };
   export let headers: HeaderValue[];
-  export let rows: T[]; 
+  export let rows: T[];
+
 </script>
 
 <table class="table-auto">
