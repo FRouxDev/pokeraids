@@ -3,10 +3,10 @@
   export let items: NavbarItem[];
 </script>
 
-<nav class="w-full flex flex-row bg-gray-700">
+<nav class="w-full flex flex-row m-3">
   {#each items as item}
     <a href={item.path}>
-      <div class="px-6 py-4 font-semibold text-lg text-gray-100 hover:bg-gray-400">
+      <div class="px-4 py-2 font-semibold text-lg text-gray-100 rounded hover:bg-pokeyellow hover:text-gray-900">
         {item.label}
       </div>
     </a>
