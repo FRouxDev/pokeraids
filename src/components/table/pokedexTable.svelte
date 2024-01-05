@@ -1,24 +1,42 @@
 <script lang="ts">
   import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
-  import { onMount } from "svelte";
-
   import FooterLink from "../layout/footer/footerLink.svelte";
   import TypeChip from "../base/typeChip.svelte";
   import { PokemonType } from "$/shared/types/pokemonType.type";
   import ChevronUpDown from "../icons/chevronUpDown.svelte";
   import ChevronUp from "../icons/chevronUp.svelte";
   import ChevronDown from "../icons/chevronDown.svelte";
+  import { Origin } from "$/shared/types/origin.type";
+  import SelectMultiple from "../base/selectMultiple.svelte";
 
   type HeaderValue = {
     label: string;
     key: keyof PokemonSpecies;
   };
   type SortOrder = 'asc' | 'desc';
+
   export let headers: HeaderValue[];
-  export let rows: PokemonSpecies[];  
+  export let rows: PokemonSpecies[];
+  
+  let activeTypeFilters: PokemonType[] = [];
+  let activeNameFilter: string = '';
+  let activeRegionFilter: Origin[] = [];
   let sortOrder: SortOrder = 'asc';
   let currentSortKey: keyof PokemonSpecies = 'nameFr';
-  let sortedRows = [...rows];
+  $: sortValueInf = sortOrder === 'asc' ? -1 : 1;
+  $: sortValueSup = sortOrder === 'asc' ? 1 : -1;
+  $: hasFilters = activeNameFilter || activeTypeFilters.length > 0 || activeRegionFilter.length > 0;
+  $: filteredRows = hasFilters ? filterRows() : rows;
+
+  $: sortedRows = [...filteredRows].sort((pkmn1, pkmn2) => {
+    const value1 = pkmn1[currentSortKey];
+    const value2 = pkmn2[currentSortKey];
+    if (value1 !== undefined && value2 !== undefined) {       
+      return value1 < value2 ? sortValueInf : sortValueSup;
+    } else {
+      return sortValueInf;
+    }      
+  });
 
   const POKEDEX_BASE_URL = 'pokedex';
 
@@ -29,27 +47,28 @@
       currentSortKey = key;
       sortOrder = 'asc';
     }
-    sortRows(currentSortKey, sortOrder);
   }
 
-  const sortRows = (key: keyof PokemonSpecies, order: SortOrder = 'asc') => {
-    const sortValueInf = order === 'asc' ? -1 : 1;
-    const sortValueSup = order === 'asc' ? 1 : -1;
-    sortedRows = sortedRows.sort((pkmn1, pkmn2) => {
-      const value1 = pkmn1[key];
-      const value2 = pkmn2[key];
-      if (value1 !== undefined && value2 !== undefined) {       
-        return value1 < value2 ? sortValueInf : sortValueSup;
-      } else {
-        return sortValueInf;
-      }      
+  const filterRows = () => {
+    return rows.filter((row) => {
+      if (activeNameFilter && row.nameFr.includes(activeNameFilter) === false) {
+        return false;
+      }
+      if (activeTypeFilters.length > 0 && (activeTypeFilters.includes(row.type1) === false) && (!row.type2 || activeTypeFilters.includes(row.type2) === false)) {
+        return false;
+      }
+      if (activeRegionFilter.length > 0 && (activeRegionFilter.includes(row.origin) === false)) {
+        return false;
+      }
+      return true;
     });
-  }
-
-  onMount(() => {
-    sortRows(currentSortKey, sortOrder);
-  });
+  };
 </script>
+
+<div>
+  <SelectMultiple label="Type :" options={Object.values(PokemonType)} bind:selectedOptions={activeTypeFilters} />
+  <SelectMultiple label="Région :" options={Object.values(Origin)} bind:selectedOptions={activeRegionFilter} />
+</div>
 
 <table class="table-fixed">
   <tr>
@@ -59,9 +78,9 @@
           <span class="w-4 h-4">
             {#if currentSortKey === header.key}
               {#if sortOrder === 'asc'}
-                <ChevronUp size={4} />
+                <ChevronUp size={3} />
               {:else}
-                <ChevronDown size={4} />
+                <ChevronDown size={3} />
               {/if}
             {:else}
               <ChevronUpDown size={4} />

@@ -1,1 +1,6 @@
-export type Origin = 'Paldea' | 'Kitakami' | 'Académie Myrtille' | 'Pokémon HOME';
+export enum Origin {
+  PALDEA = 'Paldea',
+  KITAKAMI = 'Kitakami',
+  BLUEBERRY = 'Académie Myrtille',
+  HOME = 'Pokémon HOME',
+}
