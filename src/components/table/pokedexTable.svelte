@@ -54,17 +54,23 @@
 <table class="table-fixed">
   <tr>
     {#each headers as header}
-      <th scope="col" class="text-left cursor-pointer" on:click={() => setSortRows(header.key)}>
-        {#if currentSortKey === header.key}
-          {#if sortOrder === 'asc'}
-            <ChevronUp />
-          {:else}
-            <ChevronDown />
-          {/if}
-        {:else}
-          <ChevronUpDown />
-        {/if}
-        {header.label}
+      <th scope="col" class="cursor-pointer" on:click={() => setSortRows(header.key)}>
+        <div class="flex flex-row gap-1 items-center">
+          <span class="w-4 h-4">
+            {#if currentSortKey === header.key}
+              {#if sortOrder === 'asc'}
+                <ChevronUp size={4} />
+              {:else}
+                <ChevronDown size={4} />
+              {/if}
+            {:else}
+              <ChevronUpDown size={4} />
+            {/if}
+          </span>
+          <span class="text-left">
+            {header.label}
+          </span>
+        </div>
       </th>
     {/each}
   </tr>
