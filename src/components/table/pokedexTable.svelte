@@ -54,7 +54,7 @@
 <table class="table-fixed">
   <tr>
     {#each headers as header}
-      <th scope="col" class="cursor-pointer" on:click={() => setSortRows(header.key)}>
+      <th scope="col" class="cursor-pointer select-none" on:click={() => setSortRows(header.key)}>
         <div class="flex flex-row gap-1 items-center">
           <span class="w-4 h-4">
             {#if currentSortKey === header.key}
