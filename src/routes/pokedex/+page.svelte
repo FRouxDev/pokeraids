@@ -32,7 +32,8 @@
 
 <PageLayout>
   <Heading>Pokédex</Heading>
-  <div class="mt-4">
+  <p class="my-8">Retrouvez sur cette page la liste des Pokémon disposant de builds de raids sur notre site.</p>
+  <div class="bg-background-light rounded-lg p-4">
     <PokedexTable headers={headers} rows={data.pokemonList} />
   </div>
 </PageLayout>

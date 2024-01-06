@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
-  import FooterLink from "../layout/footer/footerLink.svelte";
   import TypeChip from "../base/typeChip.svelte";
   import { PokemonType } from "$/shared/types/pokemonType.type";
   import ChevronUpDown from "../icons/chevronUpDown.svelte";
@@ -8,6 +7,7 @@
   import ChevronDown from "../icons/chevronDown.svelte";
   import { Origin } from "$/shared/types/origin.type";
   import SelectMultiple from "../base/selectMultiple.svelte";
+  import { goto } from "$app/navigation";
 
   type HeaderValue = {
     label: string;
@@ -64,13 +64,14 @@
   };
 </script>
 
-<div class="flex flex-row gap-2">
+<div class="flex flex-row gap-2 mb-4">
   <SelectMultiple label="Type :" options={Object.values(PokemonType)} bind:selectedOptions={activeTypeFilters} />
   <SelectMultiple label="Région :" options={Object.values(Origin)} bind:selectedOptions={activeRegionFilter} />
 </div>
 
-<table class="table-fixed">
-  <tr>
+<table class="table-auto w-full border-separate border-spacing-0">
+  <tr class="h-10">
+    <th></th>
     {#each headers as header}
       <th scope="col" class="cursor-pointer select-none" on:click={() => setSortRows(header.key)}>
         <div class="flex flex-row gap-1 items-center">
@@ -91,18 +92,21 @@
         </div>
       </th>
     {/each}
+    <th class="text-left px-2">Builds disponibles</th>
   </tr>
   {#each sortedRows as row}
-    <tr>
-      {#each headers as header}
+    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${row.id}`)}>
+      <td class="first:rounded-tl first:rounded-bl p-1"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
+      {#each headers as header, i}
         {#if header.key === 'nameFr'}
-          <td class="w-80"><FooterLink href={`${POKEDEX_BASE_URL}/${row[header.key]}`} label={`${row[header.key]}`} /></td>
+          <td class="w-80 pl-2 pr-1"><span class="font-semibold hover:text-pokeyellow">{row[header.key]}</span></td>
         {:else if (row[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
           <td class="w-24"><TypeChip pokemonType={row[header.key]} /></td>
         {:else}
-          <td class="w-30">{row[header.key] || ''}</td>
+          <td class="px-2">{row[header.key] || ''}</td>
         {/if}
       {/each}
+      <td class="pl-2 last:pr-3 last:rounded-tr last:rounded-br text-sm">0 build(s) disponible(s)</td>
     </tr>
   {/each}
 </table>

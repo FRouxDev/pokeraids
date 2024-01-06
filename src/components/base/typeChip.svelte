@@ -6,7 +6,5 @@
 {#if pokemonType}
   {@const alt = `Type ${pokemonType}`}
   {@const src = `/types/80px-Miniature_Type_${pokemonType}_EV.png`}
-  <span>
-    <img {src} alt="{alt}" />
-  </span>
+  <img {src} alt="{alt}" class="m-auto"/>
 {/if}
