@@ -17,6 +17,7 @@ export enum PokemonType {
   FAIRY = 'Fée',
   DARK = 'Ténèbres',
   NORMAL = 'Normal',
+  STELLAIRE = 'Stellaire',
 }
 
 export const isStringPokemonType = (str: string | unknown): str is PokemonType => {
