@@ -96,7 +96,7 @@
   </tr>
   {#each sortedRows as row}
     <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${row.id}`)}>
-      <td class="first:rounded-tl first:rounded-bl p-1"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
+      <td class="first:rounded-l-lg py-2 pl-2"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
       {#each headers as header, i}
         {#if header.key === 'nameFr'}
           <td class="w-80 pl-2 pr-1"><span class="font-semibold hover:text-pokeyellow">{row[header.key]}</span></td>
@@ -106,7 +106,7 @@
           <td class="px-2">{row[header.key] || ''}</td>
         {/if}
       {/each}
-      <td class="pl-2 last:pr-3 last:rounded-tr last:rounded-br text-sm">0 build(s) disponible(s)</td>
+      <td class="pl-2 last:pr-3 last:rounded-r-lg text-sm">0 build(s) disponible(s)</td>
     </tr>
   {/each}
 </table>
