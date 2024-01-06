@@ -25,8 +25,7 @@
   let currentSortKey: keyof PokemonSpecies = 'nameFr';
   $: sortValueInf = sortOrder === 'asc' ? -1 : 1;
   $: sortValueSup = sortOrder === 'asc' ? 1 : -1;
-  $: hasFilters = activeNameFilter || activeTypeFilters.length > 0 || activeRegionFilter.length > 0;
-  $: filteredRows = hasFilters ? filterRows() : rows;
+  $: filteredRows = (activeNameFilter || activeTypeFilters.length > 0 || activeRegionFilter.length > 0) ? filterRows() : rows;
 
   $: sortedRows = [...filteredRows].sort((pkmn1, pkmn2) => {
     const value1 = pkmn1[currentSortKey];

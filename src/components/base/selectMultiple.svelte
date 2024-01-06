@@ -38,7 +38,7 @@
       >
         {#each options as option, i (i)}
           <div class="flex flex-row gap-1 px-2 py-1 cursor-pointer select-none">
-            <input type="checkbox" id={`option ${i}`} on:change={(e) => toggleOption(e, option) } />
+            <input type="checkbox" id={`option ${i}`} checked={selectedOptions.includes(option)} on:change={(e) => toggleOption(e, option) } />
             <label for={`option ${i}`} class="text-gray-700 whitespace-nowrap">{labelKey ? option[labelKey] : option}</label>
           </div>
         {/each}

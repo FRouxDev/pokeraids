@@ -1,5 +1,6 @@
 <script lang="ts">
   import '$/app.css';
+  import '@fontsource-variable/noto-sans-jp';
   import Footer from '$/components/layout/footer/footer.svelte';
   import Navbar from '$/components/layout/navbar/navbar.svelte';
   import { pagesItems } from './appNav';
@@ -11,4 +12,8 @@
     <Footer />
   </div>
 </div>
-
+<style>
+  :global(body) {
+    font-family: "Noto Sans JP Variable", sans-serif;
+  }
+</style>
