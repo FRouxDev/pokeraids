@@ -64,7 +64,7 @@
   };
 </script>
 
-<div>
+<div class="flex flex-row gap-2">
   <SelectMultiple label="Type :" options={Object.values(PokemonType)} bind:selectedOptions={activeTypeFilters} />
   <SelectMultiple label="Région :" options={Object.values(Origin)} bind:selectedOptions={activeRegionFilter} />
 </div>
@@ -100,7 +100,7 @@
         {:else if (row[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
           <td class="w-24"><TypeChip pokemonType={row[header.key]} /></td>
         {:else}
-          <td class="w-24">{row[header.key]}</td>
+          <td class="w-30">{row[header.key] || ''}</td>
         {/if}
       {/each}
     </tr>

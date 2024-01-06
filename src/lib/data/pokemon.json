@@ -25,5 +25,82 @@
     "type2": "Électrik",
     "picture": "paume-de-fer.png",
     "origin": "Paldea"
+  },
+  {
+    "id": "mew",
+    "nameFr": "Mew",
+    "nameEn": "Mew",
+    "type1": "Psy",
+    "picture": "mew.png",
+    "origin": "Paldea"
+  },
+  {
+    "id": "aquali",
+    "nameFr": "Aquali",
+    "nameEn": "Vaporeon",
+    "type1": "Eau",
+    "picture": "aquali.png",
+    "origin": "Paldea"
+  },
+  {
+    "id": "ogerpon-wellspring",
+    "nameFr": "Ogerpon Masque du Puits",
+    "nameEn": "Ogerpon Wellspring Mask",
+    "type1": "Plante",
+    "type2": "Eau",
+    "picture": "ogerpon-puits.png",
+    "origin": "Kitakami"
+  },
+  {
+    "id": "ogerpon-teal",
+    "nameFr": "Ogerpon Masque Turquoise",
+    "nameEn": "Ogerpon Teal Mask",
+    "type1": "Plante",
+    "picture": "ogerpon-turquoise.png",
+    "origin": "Kitakami"
+  },
+  {
+    "id": "terapagos",
+    "nameFr": "Terapagos",
+    "nameEn": "Terapagos",
+    "type1": "Normal",
+    "picture": "terapagos.png",
+    "origin": "Académie Myrtille"
+  },
+  {
+    "id": "meloetta-sing",
+    "nameFr": "Meloetta Forme Chant",
+    "nameEn": "Meloetta Sing Form",
+    "type1": "Normal",
+    "type2": "Psy",
+    "picture": "meloetta-sing.png",
+    "origin": "Académie Myrtille"
+  },
+  {
+    "id": "azumarill",
+    "nameFr": "Azumarill",
+    "nameEn": "Azumarill",
+    "type1": "Eau",
+    "type2": "Fée",
+    "picture": "azumarill.png",
+    "origin": "Paldea"
+  },
+  {
+    "id": "gromago",
+    "nameFr": "Gromago",
+    "nameEn": "Gholdengo",
+    "type1": "Acier",
+    "type2": "Spectre",
+    "picture": "gromago.png",
+    "origin": "Paldea"
+  },
+  {
+    "id": "lunala",
+    "nameFr": "Lunala",
+    "nameEn": "Lunala",
+    "type1": "Spectre",
+    "type2": "Psy",
+    "picture": "lunala.png",
+    "origin": "Académie Myrtille"
   }
 ]

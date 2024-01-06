@@ -33,13 +33,13 @@
   
     {#if isOpen}
       <div
-        class="mt-2 w-auto min-w-full bg-white border border-gray-300 rounded-md shadow-lg flex flex-col absolute" 
+        class="mt-2 w-auto min-w-full bg-background-light border border-gray-300 rounded-md shadow-lg flex flex-col absolute" 
         use:clickOutside on:click_outside={() => { isOpen = false }}
       >
         {#each options as option, i (i)}
           <div class="flex flex-row gap-1 px-2 py-1 cursor-pointer select-none">
             <input type="checkbox" id={`option ${i}`} checked={selectedOptions.includes(option)} on:change={(e) => toggleOption(e, option) } />
-            <label for={`option ${i}`} class="text-gray-700 whitespace-nowrap">{labelKey ? option[labelKey] : option}</label>
+            <label for={`option ${i}`} class="text-gray-100 whitespace-nowrap">{labelKey ? option[labelKey] : option}</label>
           </div>
         {/each}
       </div>
