@@ -1,0 +1,23 @@
+[
+  {
+    "pokemonId": "aquali",
+    "description": "Sp. Def Aquali vs Typhlosion",
+    "teraType": "Eau",
+    "ability": {
+      "nameFr": "Hydratation",
+      "nameEn": "Hydration",
+      "effectFr": "Soigne les altérations de statut du Pokémon quand il pleut."
+    },
+    "evSpread": {
+      "hp": 252,
+      "spattack": 252,
+      "spdefense": 4
+    },
+    "level": 100,
+    "role": "Attacker",
+    "ranking": {
+      "solo": "S",
+      "multiplayer": "A"
+    }
+  }
+]

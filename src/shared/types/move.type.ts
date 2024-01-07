@@ -4,7 +4,7 @@ type MoveCategory = 'physical' | 'special' | 'status';
 
 type BaseMove = {
   nameFr: string;
-  nomEn: string;
+  nameEn: string;
   type: PokemonType;
   description: string;
   pp: number;

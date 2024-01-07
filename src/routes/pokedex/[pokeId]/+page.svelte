@@ -4,47 +4,86 @@
   import TypeChip from "$/components/base/typeChip.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   import StatsTable from "$/components/table/statsTable.svelte";
-  export let data: PokemonSpecies;
+  import type { Pokemon } from "$/shared/types/pokemon.type";
+  import BuildsTable from "$/components/table/buildsTable.svelte";
+  type PokedexData = {
+    pokemon: PokemonSpecies,
+    builds: Pokemon[]
+  };
+  export let data: PokedexData;
+  $: pokemon = data.pokemon;
+  $: builds = data.builds;
+
+  type HeaderData = {
+    label: string;
+    key: keyof Pokemon;
+  };
+
+  let headers: HeaderData[] = [
+    {
+      label: 'Description',
+      key: 'description',
+    },
+    {
+      label: 'Type Téracristal',
+      key: 'teraType',
+    },
+    {
+      label: 'Statistiques',
+      key: 'evSpread',
+    },
+    {
+      label: 'Talent',
+      key: 'ability'
+    }
+  ];
 </script>
 
 <PageLayout>
-  <Heading>{data.nameFr}</Heading>
+  <Heading>{pokemon.nameFr}</Heading>
   <div class="bg-background-light rounded-lg p-4 mt-8">
     <div class="grid grid-cols-2 auto-rows-max">
       <div>
-        <img src={`/images/${data.picture}`} alt={data.nameFr} class="m-auto" />
+        <img src={`/images/${pokemon.picture}`} alt={pokemon.nameFr} class="m-auto" />
       </div>
       <div>
         <div class="grid grid-cols-3">
           <div class="col-span-1">Type</div>
-          <div class="col-span-2"><TypeChip pokemonType={data.type1} /></div>
+          <div class="col-span-2"><TypeChip pokemonType={pokemon.type1} /></div>
           <div class="col-span-1">Région</div>
-          <div class="col-span-2">{data.origin}</div>
+          <div class="col-span-2">{pokemon.origin}</div>
           <div class="col-span-1">Talents</div>
           <div class="col-span-2">
-            {#if data.abilities}
+            {#if pokemon.abilities}
               <ul> 
-                {#each data.abilities as ability}
+                {#each pokemon.abilities as ability}
                   <li>{ability.nameFr}</li>
                 {/each}
               </ul>
             {/if}
           </div>
 
-          {#if data.hiddenAbility}
+          {#if pokemon.hiddenAbility}
             <div class="col-span-1">Talent caché</div>
-            <div class="col-span-2">{data.hiddenAbility.nameFr}</div>
+            <div class="col-span-2">{pokemon.hiddenAbility.nameFr}</div>
           {/if}
-          {#if data.pokemonStats}
+          {#if pokemon.pokemonStats}
             <div class="col-span-3 mt-6">
-              <StatsTable stats={data.pokemonStats} />
+              <StatsTable stats={pokemon.pokemonStats} />
             </div>
           {/if}
         </div>
+      </div>
     </div>
-
     <div class="mt-8">
       <Heading level={2}>Builds avec ce Pokémon</Heading>
+      {#if builds}
+        <div class="mt-2">
+          <BuildsTable headers={headers} rows={builds} />
+        </div>
+      {:else}
+        <p>Aucun build répertorié pour ce Pokémon :(</p>
+      {/if}
     </div>
   </div>
 </PageLayout>

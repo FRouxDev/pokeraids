@@ -1,10 +1,3 @@
-enum Stats {
-  HP = 'hp',
-  ATTACK = 'atk',
-  DEFENSE = 'def',
-  SPECIAL_ATTACK = 'spatk',
-  SPECIAL_DEFENSE = 'spdef',
-  SPEED = 'speed',
-}
+import type { Stats } from './stats.type';
 
 export type EvSpread = Partial<Record<Stats, number>>;
