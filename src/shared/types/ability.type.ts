@@ -1,5 +1,6 @@
 export type Ability = {
-  nomFr: string;
+  nameFr: string;
   nomEn: string;
-  effect: string;
+  effectFr: string;
+  effectEn?: string;
 };

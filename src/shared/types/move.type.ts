@@ -3,7 +3,7 @@ import type { PokemonType } from './pokemonType.type';
 type MoveCategory = 'physical' | 'special' | 'status';
 
 type BaseMove = {
-  nomFr: string;
+  nameFr: string;
   nomEn: string;
   type: PokemonType;
   description: string;

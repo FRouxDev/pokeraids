@@ -8,5 +8,5 @@
 {#if pokemonType}
   {@const alt = `Type ${pokemonType}`}
   {@const src = `/types/${size}/${prefix}Miniature_Type_${pokemonType}_EV.png`}
-  <img {src} alt="{alt}" class="m-auto"/>
+  <img {src} alt="{alt}" class="m-auto inline"/>
 {/if}
