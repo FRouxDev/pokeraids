@@ -63,13 +63,13 @@
     <tr class="h-10 hover:bg-background-dark cursor-pointer">
       {#each headers as header, i}
         {#if (row[header.key] !== undefined && (header.key === 'teraType'))}
-          <td class="px-2"><TypeChip pokemonType={row[header.key]} /></td>
+          <td class="px-2 align-middle pb-1"><TypeChip pokemonType={row[header.key]} /></td>
         {:else if (row[header.key] !== undefined && header.key === 'evSpread')}
           <td class="px-2">{spreadFormatter(row[header.key])}</td>
         {:else if (row[header.key] !== undefined && header.key === 'ability')}
-          <td class="px-2"><Tooltip text={row[header.key].nameFr} content={row[header.key].effectFr} /></td>
+          <td class="px-2 last:pr-3 last:rounded-r-lg"><Tooltip text={row[header.key].nameFr} content={row[header.key].effectFr} /></td>
         {:else}
-          <td class="px-2">{row[header.key] || ''}</td>
+          <td class="first:rounded-l-lg first:pl-3 px-2">{row[header.key] || ''}</td>
         {/if}
       {/each}
     </tr>
