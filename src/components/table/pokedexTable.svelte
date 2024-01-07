@@ -8,6 +8,7 @@
   import { Origin } from "$/shared/types/origin.type";
   import SelectMultiple from "../base/selectMultiple.svelte";
   import { goto } from "$app/navigation";
+  import { removeAccents } from "$/lib/utils/removeAccent";
 
   type HeaderValue = {
     label: string;
@@ -30,11 +31,23 @@
   $: sortedRows = [...filteredRows].sort((pkmn1, pkmn2) => {
     const value1 = pkmn1[currentSortKey];
     const value2 = pkmn2[currentSortKey];
-    if (value1 !== undefined && value2 !== undefined) {       
-      return value1 < value2 ? sortValueInf : sortValueSup;
-    } else {
+
+    // TODO: Refacto
+    if (value1 !== undefined && value2 !== undefined) {
+      if (typeof value1 === 'string' && typeof value2 === 'string') {
+        const flatValue1 = removeAccents(value1);
+        const flatValue2 = removeAccents(value2);
+        return flatValue1 < flatValue2 ? sortValueInf : sortValueSup;
+      }
+      return value1 < value2 ? sortValueInf : sortValueSup;    
+    } 
+    if (value1 !== undefined && value2 === undefined) {
       return sortValueInf;
-    }      
+    }
+    if (value2 !== undefined && value1 === undefined) {
+      return sortValueSup;
+    }
+    return sortValueSup;
   });
 
   const POKEDEX_BASE_URL = 'pokedex';
