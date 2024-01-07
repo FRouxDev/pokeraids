@@ -17,4 +17,17 @@ export const pagesItems: NavbarItem[] = [
     path: '/pokedex',
     label: 'Pokédex',
   },
+  {
+    label: 'Guides',
+    subItems: [
+      {
+        path: '/guides/craft',
+        label: 'Monter un Pokémon',
+      },
+      {
+        path: '/guides/raids',
+        label: 'Mécaniques de raids',
+      },
+    ],
+  },
 ];
