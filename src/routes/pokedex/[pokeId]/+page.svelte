@@ -6,6 +6,7 @@
   import StatsTable from "$/components/table/statsTable.svelte";
   import type { Pokemon } from "$/shared/types/pokemon.type";
   import BuildsTable from "$/components/table/buildsTable.svelte";
+  import Tooltip from "$/components/base/tooltip.svelte";
   type PokedexData = {
     pokemon: PokemonSpecies,
     builds: Pokemon[]
@@ -55,17 +56,15 @@
           <div class="col-span-1">Talents</div>
           <div class="col-span-2">
             {#if pokemon.abilities}
-              <ul> 
-                {#each pokemon.abilities as ability}
-                  <li>{ability.nameFr}</li>
-                {/each}
-              </ul>
+              {#each pokemon.abilities as ability}
+                <Tooltip text={ability.nameFr} content={ability.effectFr} />
+              {/each}
             {/if}
           </div>
 
           {#if pokemon.hiddenAbility}
             <div class="col-span-1">Talent caché</div>
-            <div class="col-span-2">{pokemon.hiddenAbility.nameFr}</div>
+            <div class="col-span-2"><Tooltip text={pokemon.hiddenAbility.nameFr} content={pokemon.hiddenAbility.effectFr} /></div>
           {/if}
           {#if pokemon.pokemonStats}
             <div class="col-span-3 mt-6">

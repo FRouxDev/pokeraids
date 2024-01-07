@@ -3,6 +3,7 @@
   import type { EvSpread } from "$/shared/types/evSpread.type";
   import type { Pokemon } from "$/shared/types/pokemon.type";
   import type { PokemonStats } from "$/shared/types/stats.type";
+  import Tooltip from "../base/tooltip.svelte";
   import TypeChip from "../base/typeChip.svelte";
   import ChevronDown from "../icons/chevronDown.svelte";
   import ChevronUp from "../icons/chevronUp.svelte";
@@ -66,7 +67,7 @@
         {:else if (row[header.key] !== undefined && header.key === 'evSpread')}
           <td class="px-2">{spreadFormatter(row[header.key])}</td>
         {:else if (row[header.key] !== undefined && header.key === 'ability')}
-          <td class="px-2">{row[header.key].nameFr}</td>
+          <td class="px-2"><Tooltip text={row[header.key].nameFr} content={row[header.key].effectFr} /></td>
         {:else}
           <td class="px-2">{row[header.key] || ''}</td>
         {/if}
