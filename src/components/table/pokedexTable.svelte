@@ -114,7 +114,7 @@
         {#if header.key === 'nameFr'}
           <td class="w-80 pl-2 pr-1"><span class="font-semibold hover:text-pokeyellow">{row[header.key]}</span></td>
         {:else if (row[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
-          <td class="w-24 pb-2"><TypeChip pokemonType={row[header.key]} /></td>
+          <td class="w-24 pb-1 align-middle"><TypeChip pokemonType={row[header.key]} /></td>
         {:else}
           <td class="px-2">{row[header.key] || ''}</td>
         {/if}

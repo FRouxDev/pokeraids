@@ -1,11 +1,11 @@
 [
   {
-    "id": "courroussinge",
-    "nameFr": "Courroussinge",
+    "id": "courrousinge",
+    "nameFr": "Courrousinge",
     "nameEn": "Annihilape",
     "type1": "Spectre",
     "type2": "Combat",
-    "picture": "courroussinge.png",
+    "picture": "courrousinge.png",
     "origin": "Paldea",
     "abilities": [
       {
@@ -23,6 +23,14 @@
       "nameFr": "Acharné",
       "nameEn": "Defiant",
       "effectFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
+    },
+    "pokemonStats": {
+      "hp": 110,
+      "attack": 115,
+      "defense": 80,
+      "spattack": 50,
+      "spdefense": 90,
+      "speed": 90
     }
   },
   {
@@ -32,7 +40,22 @@
     "type1": "Dragon",
     "type2": "Électrik",
     "picture": "miraidon.png",
-    "origin": "Paldea"
+    "origin": "Paldea",
+    "abilities": [
+      {
+        "nameFr": "Moteur à Hadrons",
+        "nameEn": "Hadron Engine",
+        "effectFr": "Le Pokémon crée un champ électrifié quand il rejoint le combat. Une machine du futur fait monter son Attaque Spéciale si un champ électrifié est actif."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 100,
+      "attack": 85,
+      "defense": 100,
+      "spattack": 135,
+      "spdefense": 115,
+      "speed": 135
+    }
   },
   {
     "id": "paume-de-fer",
@@ -41,7 +64,22 @@
     "type1": "Combat",
     "type2": "Électrik",
     "picture": "paume-de-fer.png",
-    "origin": "Paldea"
+    "origin": "Paldea",
+    "abilities": [
+      {
+        "nameFr": "Charge Quantique",
+        "nameEn": "Quark Drive",
+        "effectFr": "Quand un champ électrifié est actif ou que le Pokémon tient une capsule d’Énergie Booster, sa stat la plus élevée augmente.."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 154,
+      "attack": 140,
+      "defense": 108,
+      "spattack": 50,
+      "spdefense": 68,
+      "speed": 50
+    }
   },
   {
     "id": "mew",
@@ -49,7 +87,22 @@
     "nameEn": "Mew",
     "type1": "Psy",
     "picture": "mew.png",
-    "origin": "Paldea"
+    "origin": "Paldea",
+    "abilities": [
+      {
+        "nameFr": "Synchro",
+        "nameEn": "Synchronize",
+        "effectFr": "Quand le Pokémon est brûlé, paralysé ou empoisonné par un autre Pokémon, il partage ce statut avec celui-ci."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 100,
+      "attack": 100,
+      "defense": 100,
+      "spattack": 100,
+      "spdefense": 100,
+      "speed": 100
+    }
   },
   {
     "id": "aquali",
@@ -72,9 +125,9 @@
     },
     "pokemonStats": {
       "hp": 100,
-      "attack": 55,
+      "attack": 65,
       "defense": 60,
-      "spattack": 120,
+      "spattack": 110,
       "spdefense": 95,
       "speed": 65
     }
@@ -86,7 +139,22 @@
     "type1": "Plante",
     "type2": "Eau",
     "picture": "ogerpon-puits.png",
-    "origin": "Kitakami"
+    "origin": "Kitakami",
+    "abilities": [
+      {
+        "nameFr": "Absorbe-Eau",
+        "nameEn": "Water Absorb",
+        "effectFr": "Si le Pokémon est touché par une capacité Eau, il ne subit aucun dégât et regagne des PV à la place."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 80,
+      "attack": 120,
+      "defense": 84,
+      "spattack": 60,
+      "spdefense": 96,
+      "speed": 110
+    }
   },
   {
     "id": "ogerpon-teal",
@@ -94,24 +162,46 @@
     "nameEn": "Ogerpon Teal Mask",
     "type1": "Plante",
     "picture": "ogerpon-turquoise.png",
-    "origin": "Kitakami"
-  },
-  {
-    "id": "terapagos",
-    "nameFr": "Terapagos",
-    "nameEn": "Terapagos",
-    "type1": "Normal",
-    "picture": "terapagos.png",
-    "origin": "Académie Myrtille"
+    "origin": "Kitakami",
+    "abilities": [
+      {
+        "nameFr": "Acharné",
+        "nameEn": "Defiant",
+        "effectFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 80,
+      "attack": 120,
+      "defense": 84,
+      "spattack": 60,
+      "spdefense": 96,
+      "speed": 110
+    }
   },
   {
     "id": "meloetta-sing",
     "nameFr": "Meloetta Forme Chant",
-    "nameEn": "Meloetta Sing Form",
+    "nameEn": "Meloetta Aria Form",
     "type1": "Normal",
     "type2": "Psy",
     "picture": "meloetta-aria.png",
-    "origin": "Académie Myrtille"
+    "origin": "Académie Myrtille",
+    "abilities": [
+      {
+        "nameFr": "Sérénité",
+        "nameEn": "Serene Grace",
+        "effectFr": "Augmente les chances d'infliger des effets additionnels."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 100,
+      "attack": 77,
+      "defense": 77,
+      "spattack": 128,
+      "spdefense": 128,
+      "speed": 90
+    }
   },
   {
     "id": "azumarill",
@@ -120,7 +210,32 @@
     "type1": "Eau",
     "type2": "Fée",
     "picture": "azumarill.png",
-    "origin": "Paldea"
+    "origin": "Paldea",
+    "abilities": [
+      {
+        "nameFr": "Isograisse",
+        "nameEn": "Thick Fat",
+        "effectFr": "Le Pokémon est protégé par une épaisse couche de graisse qui diminue de moitié les dégâts qu’il subit des capacités de types Feu et Glace."
+      },
+      {
+        "nameFr": "Coloforce",
+        "nameEn": "Huge Power",
+        "effectFr": "Double la puissance des attaques physiques."
+      }
+    ],
+    "hiddenAbility": {
+      "nameFr": "Herbivore",
+      "nameEn": "Sap Sipper",
+      "effectFr": "Annule les attaques de type Plante subies par le Pokémon et augmente son Attaque."
+    },
+    "pokemonStats": {
+      "hp": 100,
+      "attack": 50,
+      "defense": 80,
+      "spattack": 60,
+      "spdefense": 80,
+      "speed": 50
+    }
   },
   {
     "id": "gromago",
@@ -129,7 +244,22 @@
     "type1": "Acier",
     "type2": "Spectre",
     "picture": "gromago.png",
-    "origin": "Paldea"
+    "origin": "Paldea",
+    "abilities": [
+      {
+        "nameFr": "Corps en Or",
+        "nameEn": "Good as Gold",
+        "effectFr": "Le corps en or pur et robuste du Pokémon l'immunise contre les capacités de statut des autres Pokémon."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 87,
+      "attack": 60,
+      "defense": 95,
+      "spattack": 133,
+      "spdefense": 91,
+      "speed": 84
+    }
   },
   {
     "id": "lunala",
@@ -138,6 +268,21 @@
     "type1": "Spectre",
     "type2": "Psy",
     "picture": "lunala.png",
-    "origin": "Académie Myrtille"
+    "origin": "Académie Myrtille",
+    "abilities": [
+      {
+        "nameFr": "Spectro-Bouclier",
+        "nameEn": "Shadow Shield",
+        "effectFr": "Le Pokémon subit moins de dégâts quand ses PV sont au maximum."
+      }
+    ],
+    "pokemonStats": {
+      "hp": 137,
+      "attack": 113,
+      "defense": 89,
+      "spattack": 137,
+      "spdefense": 107,
+      "speed": 97
+    }
   }
 ]
