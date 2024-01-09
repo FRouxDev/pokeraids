@@ -38,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource-variable/noto-sans-jp": "^5.0.17",
+		"mongoose": "^8.0.4",
 		"uuid": "^9.0.1"
 	}
 }
