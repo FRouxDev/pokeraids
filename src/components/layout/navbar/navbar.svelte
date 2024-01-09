@@ -4,7 +4,8 @@
   export let items: NavbarItem[];
 </script>
 
-<nav class="w-full flex flex-row m-3">
+<nav class="w-full flex flex-row items-center m-3 gap-2">
+  <a href="/"><img src="/assets/logoPokeraids_sm.png" alt="Pokéraids" /></a>  
   {#each items as item}
     {#if 'path' in item}
       <a href={item.path}>
