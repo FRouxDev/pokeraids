@@ -7,6 +7,7 @@ import type { TierRanking } from './tierRanking.type';
 
 export type Pokemon = {
   pokemonId: string;
+  buildId: string;
   description: string;
   teraType: PokemonType;
   ability: Ability;

@@ -3,6 +3,7 @@
   import type { EvSpread } from "$/shared/types/evSpread.type";
   import type { Pokemon } from "$/shared/types/pokemon.type";
   import type { PokemonStats } from "$/shared/types/stats.type";
+  import { goto } from "$app/navigation";
   import Tooltip from "../base/tooltip.svelte";
   import TypeChip from "../base/typeChip.svelte";
   import ChevronDown from "../icons/chevronDown.svelte";
@@ -22,6 +23,8 @@
   let currentSortKey: keyof Pokemon = 'pokemonId';
   $: sortValueInf = sortOrder === 'asc' ? -1 : 1;
   $: sortValueSup = sortOrder === 'asc' ? 1 : -1;
+
+  const BUILDS_BASE_URL = 'raid-builds';
 
   const spreadFormatter = (spread: EvSpread) => {
     let spreadDisplay = '';
@@ -60,7 +63,7 @@
     {/each}
   </tr>
   {#each rows as row}
-    <tr class="h-10 hover:bg-background-dark cursor-pointer">
+    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`../${BUILDS_BASE_URL}/${row.buildId}`)}>
       {#each headers as header, i}
         {#if (row[header.key] !== undefined && (header.key === 'teraType'))}
           <td class="px-2 align-middle pb-1"><TypeChip pokemonType={row[header.key]} /></td>
