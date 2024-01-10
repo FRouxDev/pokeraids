@@ -2,16 +2,17 @@ import { Origin } from '$/shared/types/origin.type';
 import { PokemonType } from '$/shared/types/pokemonType.type';
 import type { PokemonStats } from '$/shared/types/stats.type';
 import mongoose, { Model } from 'mongoose';
-import { AbilityModel, type Ability } from './Ability';
+import { type Ability } from './Ability';
 
 export type PokemonSpecies = {
+  _id?: string;
   slug: string;
   nameFr: string;
   nameEn: string;
   type1: PokemonType;
   type2?: PokemonType;
   picture?: string;
-  abilities?: Ability[];
+  abilities: Ability[];
   hiddenAbility?: Ability;
   pokemonStats?: PokemonStats;
   origin: Origin;
@@ -27,7 +28,7 @@ const PokemonSpeciesSchema = new mongoose.Schema({
     required: true,
   },
   nameEn: {
-    type: Number,
+    type: String,
     required: true,
   },
   type1: {
@@ -43,11 +44,13 @@ const PokemonSpeciesSchema = new mongoose.Schema({
     type: String,
   },
   abilities: {
-    type: [AbilityModel],
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Ability',
     required: true,
   },
   hiddenAbility: {
-    type: AbilityModel,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Ability',
   },
   pokemonStats: {
     type: {
