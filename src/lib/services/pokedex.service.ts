@@ -1,9 +1,8 @@
-import type { Pokemon } from '$/shared/types/pokemon.type';
+import type { RaidBuild } from '$lib/data/models/RaidBuild';
 import type { PokemonSpecies } from '$lib/data/models/PokemonSpecies';
 import type { PokemonType } from '$/shared/types/pokemonType.type';
 import pokemonList from '$lib/data/pokemon.json';
 import buildsList from '$lib/data/builds.json';
-import type { Role } from '$/shared/types/role.type';
 import type { RankingValue } from '$/shared/types/tierRanking.type';
 import type { Origin } from '$/shared/types/origin.type';
 
@@ -18,11 +17,9 @@ const typedPokemonList = pokemonList.map((pokemon) => {
 });
 
 const typedBuildList = buildsList.map((build) => {
-  const newBuild: Pokemon = {
+  const newBuild: Partial<RaidBuild> = {
     ...build,
     teraType: build.teraType as PokemonType,
-    role: build.role as Role,
-    level: 100,
     ranking: {
       solo: build.ranking.solo as RankingValue | undefined,
       multiplayer: build.ranking.multiplayer as RankingValue | undefined,
@@ -35,8 +32,8 @@ export const findPokemonById = (pokemonId: string): PokemonSpecies | undefined =
   return typedPokemonList.find((poke) => poke.slug === pokemonId);
 };
 
-export const findBuildsByPokemonId = (pokemonId: string): Pokemon[] | undefined => {
-  return typedBuildList.filter((build) => build.pokemonId === pokemonId);
+export const findBuildsByPokemonId = (pokemonId: string): Partial<RaidBuild>[] | undefined => {
+  return typedBuildList.filter((build) => build.pokemon?.slug === pokemonId);
 };
 
 export const getAllPokemon = () => {

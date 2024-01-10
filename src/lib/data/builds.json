@@ -1,8 +1,8 @@
 [
   {
-    "buildId": "sp-defp-aquali-typhlosion",
+    "slug": "sp-defp-aquali-typhlosion",
     "pokemonId": "aquali",
-    "description": "Sp. Def Aquali vs Typhlosion",
+    "descriptionFr": "Sp. Def Aquali vs Typhlosion",
     "teraType": "Eau",
     "ability": {
       "nameFr": "Hydratation",
@@ -14,8 +14,6 @@
       "spattack": 252,
       "spdefense": 4
     },
-    "level": 100,
-    "role": "Attacker",
     "ranking": {
       "solo": "S",
       "multiplayer": "A"

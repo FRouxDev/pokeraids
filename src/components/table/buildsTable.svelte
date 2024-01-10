@@ -63,7 +63,7 @@
     {/each}
   </tr>
   {#each rows as row}
-    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`../${BUILDS_BASE_URL}/${row.buildId}`)}>
+    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`../${BUILDS_BASE_URL}/${row.slug}`)}>
       {#each headers as header, i}
         {#if (row[header.key] !== undefined && (header.key === 'teraType'))}
           <td class="px-2 align-middle pb-1"><TypeChip pokemonType={row[header.key]} /></td>

@@ -1,7 +1,7 @@
 <script>
   import FormButton from "$/components/base/formButton.svelte";
   export let data;
-  $: ({ abilitiesCount, pokemonCount, movesCount } = data);
+  $: ({ abilitiesCount, pokemonCount, movesCount, buildsCount } = data);
 </script>
 <p>Manager de DB bonjour !</p>
 <div class="bg-background-light p-4 rounded my-4">
@@ -10,6 +10,7 @@
     <li>{pokemonCount} espèces de Pokémon</li>
     <li>{abilitiesCount} talents</li>
     <li>{movesCount} attaques</li>
+    <li>{buildsCount} builds de raids</li>
   </ul>
 </div>
 
@@ -20,5 +21,9 @@
   
   <form method="POST" action="?/list-pokemon">
     <FormButton label="Synchro Pokémon" />
+  </form>
+
+  <form method="POST" action="?/list-builds">
+    <FormButton label="Synchro Builds" />
   </form>
 </div>

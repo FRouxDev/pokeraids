@@ -2,13 +2,13 @@ import { findBuildById } from '$/lib/services/builds.service';
 import { error } from '@sveltejs/kit';
 
 type BuildParams = {
-  buildId: string;
+  slug: string;
 };
 
 export function load({ params }: { params: BuildParams }) {
-  const { buildId } = params;
-  if (buildId) {
-    const build = findBuildById(buildId);
+  const { slug } = params;
+  if (slug) {
+    const build = findBuildById(slug);
     if (build) {
       return {
         build,
