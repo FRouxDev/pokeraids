@@ -1,19 +1,22 @@
 import type { Load } from '@sveltejs/kit';
-import { DB_USER } from '$env/static/private';
+
 import { dbConnect } from '$/lib/utils/db';
 import { MoveModel } from '$/lib/data/models/Move';
 
 export const load: Load = async () => {
   await dbConnect();
 
-  const fakeOut = new MoveModel({
-    nameFr: 'Bluff',
-    nameEn: 'Fake out',
-  });
+  const moves = await MoveModel.find({}).lean();
 
-  await fakeOut.save();
-
-  return {
-    user: DB_USER,
+  const returnMoves = {
+    moves: moves.map((move) => {
+      return {
+        ...move,
+        _id: move._id.toString(),
+      };
+    }),
   };
+
+  console.log(returnMoves);
+  return returnMoves;
 };

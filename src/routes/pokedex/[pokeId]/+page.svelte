@@ -57,14 +57,14 @@
           <div class="col-span-2">
             {#if pokemon.abilities}
               {#each pokemon.abilities as ability}
-                <Tooltip text={ability.nameFr} content={ability.effectFr} />
+                <Tooltip text={ability.nameFr} content={ability.descriptionFr} />
               {/each}
             {/if}
           </div>
 
           {#if pokemon.hiddenAbility}
             <div class="col-span-1">Talent caché</div>
-            <div class="col-span-2"><Tooltip text={pokemon.hiddenAbility.nameFr} content={pokemon.hiddenAbility.effectFr} /></div>
+            <div class="col-span-2"><Tooltip text={pokemon.hiddenAbility.nameFr} content={pokemon.hiddenAbility.descriptionFr} /></div>
           {/if}
           {#if pokemon.pokemonStats}
             <div class="col-span-3 mt-6">

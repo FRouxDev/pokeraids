@@ -70,7 +70,7 @@
         {:else if (row[header.key] !== undefined && header.key === 'evSpread')}
           <td class="px-2">{spreadFormatter(row[header.key])}</td>
         {:else if (row[header.key] !== undefined && header.key === 'ability')}
-          <td class="px-2 last:pr-3 last:rounded-r-lg"><Tooltip text={row[header.key].nameFr} content={row[header.key].effectFr} /></td>
+          <td class="px-2 last:pr-3 last:rounded-r-lg"><Tooltip text={row[header.key].nameFr} content={row[header.key].descriptionFr} /></td>
         {:else}
           <td class="first:rounded-l-lg first:pl-3 px-2">{row[header.key] || ''}</td>
         {/if}

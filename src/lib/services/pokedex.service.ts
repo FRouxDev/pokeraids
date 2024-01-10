@@ -1,5 +1,5 @@
 import type { Pokemon } from '$/shared/types/pokemon.type';
-import type { PokemonSpecies } from '$/shared/types/pokemonSpecies.type';
+import type { PokemonSpecies } from '$lib/data/models/PokemonSpecies';
 import type { PokemonType } from '$/shared/types/pokemonType.type';
 import pokemonList from '$lib/data/pokemon.json';
 import buildsList from '$lib/data/builds.json';
@@ -32,7 +32,7 @@ const typedBuildList = buildsList.map((build) => {
 });
 
 export const findPokemonById = (pokemonId: string): PokemonSpecies | undefined => {
-  return typedPokemonList.find((poke) => poke.id === pokemonId);
+  return typedPokemonList.find((poke) => poke.slug === pokemonId);
 };
 
 export const findBuildsByPokemonId = (pokemonId: string): Pokemon[] | undefined => {

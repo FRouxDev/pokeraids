@@ -7,7 +7,7 @@
     "ability": {
       "nameFr": "Hydratation",
       "nameEn": "Hydration",
-      "effectFr": "Soigne les altérations de statut du Pokémon quand il pleut."
+      "descriptionFr": "Soigne les altérations de statut du Pokémon quand il pleut."
     },
     "evSpread": {
       "hp": 252,

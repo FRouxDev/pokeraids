@@ -1,6 +1,6 @@
 [
   {
-    "id": "courrousinge",
+    "slug": "courrousinge",
     "nameFr": "Courrousinge",
     "nameEn": "Annihilape",
     "type1": "Spectre",
@@ -11,18 +11,18 @@
       {
         "nameFr": "Esprit Vital",
         "nameEn": "Vital Spirit",
-        "effectFr": "Empêche le Pokémon de s'endormir."
+        "descriptionFr": "Empêche le Pokémon de s'endormir."
       },
       {
         "nameFr": "Attention",
         "nameEn": "Inner focus",
-        "effectFr": "Le Pokémon a un mental à toute épreuve qui empêche les attaques ennemies de lui faire peur. Il est aussi immunisé contre le talent Intimidation."
+        "descriptionFr": "Le Pokémon a un mental à toute épreuve qui empêche les attaques ennemies de lui faire peur. Il est aussi immunisé contre le talent Intimidation."
       }
     ],
     "hiddenAbility": {
       "nameFr": "Acharné",
       "nameEn": "Defiant",
-      "effectFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
+      "descriptionFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
     },
     "pokemonStats": {
       "hp": 110,
@@ -34,7 +34,7 @@
     }
   },
   {
-    "id": "miraidon",
+    "slug": "miraidon",
     "nameFr": "Miraidon",
     "nameEn": "Miraidon",
     "type1": "Dragon",
@@ -45,7 +45,7 @@
       {
         "nameFr": "Moteur à Hadrons",
         "nameEn": "Hadron Engine",
-        "effectFr": "Le Pokémon crée un champ électrifié quand il rejoint le combat. Une machine du futur fait monter son Attaque Spéciale si un champ électrifié est actif."
+        "descriptionFr": "Le Pokémon crée un champ électrifié quand il rejoint le combat. Une machine du futur fait monter son Attaque Spéciale si un champ électrifié est actif."
       }
     ],
     "pokemonStats": {
@@ -58,7 +58,7 @@
     }
   },
   {
-    "id": "paume-de-fer",
+    "slug": "paume-de-fer",
     "nameFr": "Paume-de-Fer",
     "nameEn": "Iron Hands",
     "type1": "Combat",
@@ -69,7 +69,7 @@
       {
         "nameFr": "Charge Quantique",
         "nameEn": "Quark Drive",
-        "effectFr": "Quand un champ électrifié est actif ou que le Pokémon tient une capsule d’Énergie Booster, sa stat la plus élevée augmente.."
+        "descriptionFr": "Quand un champ électrifié est actif ou que le Pokémon tient une capsule d’Énergie Booster, sa stat la plus élevée augmente.."
       }
     ],
     "pokemonStats": {
@@ -82,7 +82,7 @@
     }
   },
   {
-    "id": "mew",
+    "slug": "mew",
     "nameFr": "Mew",
     "nameEn": "Mew",
     "type1": "Psy",
@@ -92,7 +92,7 @@
       {
         "nameFr": "Synchro",
         "nameEn": "Synchronize",
-        "effectFr": "Quand le Pokémon est brûlé, paralysé ou empoisonné par un autre Pokémon, il partage ce statut avec celui-ci."
+        "descriptionFr": "Quand le Pokémon est brûlé, paralysé ou empoisonné par un autre Pokémon, il partage ce statut avec celui-ci."
       }
     ],
     "pokemonStats": {
@@ -105,7 +105,7 @@
     }
   },
   {
-    "id": "aquali",
+    "slug": "aquali",
     "nameFr": "Aquali",
     "nameEn": "Vaporeon",
     "type1": "Eau",
@@ -115,13 +115,13 @@
       {
         "nameFr": "Absorbe-Eau",
         "nameEn": "Water Absorb",
-        "effectFr": "Si le Pokémon est touché par une capacité Eau, il ne subit aucun dégât et regagne des PV à la place."
+        "descriptionFr": "Si le Pokémon est touché par une capacité Eau, il ne subit aucun dégât et regagne des PV à la place."
       }
     ],
     "hiddenAbility": {
       "nameFr": "Hydratation",
       "nameEn": "Hydration",
-      "effectFr": "Soigne les altérations de statut du Pokémon quand il pleut."
+      "descriptionFr": "Soigne les altérations de statut du Pokémon quand il pleut."
     },
     "pokemonStats": {
       "hp": 100,
@@ -133,7 +133,7 @@
     }
   },
   {
-    "id": "ogerpon-wellspring",
+    "slug": "ogerpon-wellspring",
     "nameFr": "Ogerpon Masque du Puits",
     "nameEn": "Ogerpon Wellspring Mask",
     "type1": "Plante",
@@ -144,7 +144,7 @@
       {
         "nameFr": "Absorbe-Eau",
         "nameEn": "Water Absorb",
-        "effectFr": "Si le Pokémon est touché par une capacité Eau, il ne subit aucun dégât et regagne des PV à la place."
+        "descriptionFr": "Si le Pokémon est touché par une capacité Eau, il ne subit aucun dégât et regagne des PV à la place."
       }
     ],
     "pokemonStats": {
@@ -157,7 +157,7 @@
     }
   },
   {
-    "id": "ogerpon-teal",
+    "slug": "ogerpon-teal",
     "nameFr": "Ogerpon Masque Turquoise",
     "nameEn": "Ogerpon Teal Mask",
     "type1": "Plante",
@@ -167,7 +167,7 @@
       {
         "nameFr": "Acharné",
         "nameEn": "Defiant",
-        "effectFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
+        "descriptionFr": "Augmente beaucoup l'Attaque du Pokémon quand ses stats sont baissées par l'adversaire."
       }
     ],
     "pokemonStats": {
@@ -180,7 +180,7 @@
     }
   },
   {
-    "id": "meloetta-sing",
+    "slug": "meloetta-sing",
     "nameFr": "Meloetta Forme Chant",
     "nameEn": "Meloetta Aria Form",
     "type1": "Normal",
@@ -191,7 +191,7 @@
       {
         "nameFr": "Sérénité",
         "nameEn": "Serene Grace",
-        "effectFr": "Augmente les chances d'infliger des effets additionnels."
+        "descriptionFr": "Augmente les chances d'infliger des effets additionnels."
       }
     ],
     "pokemonStats": {
@@ -204,7 +204,7 @@
     }
   },
   {
-    "id": "azumarill",
+    "slug": "azumarill",
     "nameFr": "Azumarill",
     "nameEn": "Azumarill",
     "type1": "Eau",
@@ -215,18 +215,18 @@
       {
         "nameFr": "Isograisse",
         "nameEn": "Thick Fat",
-        "effectFr": "Le Pokémon est protégé par une épaisse couche de graisse qui diminue de moitié les dégâts qu’il subit des capacités de types Feu et Glace."
+        "descriptionFr": "Le Pokémon est protégé par une épaisse couche de graisse qui diminue de moitié les dégâts qu’il subit des capacités de types Feu et Glace."
       },
       {
         "nameFr": "Coloforce",
         "nameEn": "Huge Power",
-        "effectFr": "Double la puissance des attaques physiques."
+        "descriptionFr": "Double la puissance des attaques physiques."
       }
     ],
     "hiddenAbility": {
       "nameFr": "Herbivore",
       "nameEn": "Sap Sipper",
-      "effectFr": "Annule les attaques de type Plante subies par le Pokémon et augmente son Attaque."
+      "descriptionFr": "Annule les attaques de type Plante subies par le Pokémon et augmente son Attaque."
     },
     "pokemonStats": {
       "hp": 100,
@@ -238,7 +238,7 @@
     }
   },
   {
-    "id": "gromago",
+    "slug": "gromago",
     "nameFr": "Gromago",
     "nameEn": "Gholdengo",
     "type1": "Acier",
@@ -249,7 +249,7 @@
       {
         "nameFr": "Corps en Or",
         "nameEn": "Good as Gold",
-        "effectFr": "Le corps en or pur et robuste du Pokémon l'immunise contre les capacités de statut des autres Pokémon."
+        "descriptionFr": "Le corps en or pur et robuste du Pokémon l'immunise contre les capacités de statut des autres Pokémon."
       }
     ],
     "pokemonStats": {
@@ -262,7 +262,7 @@
     }
   },
   {
-    "id": "lunala",
+    "slug": "lunala",
     "nameFr": "Lunala",
     "nameEn": "Lunala",
     "type1": "Spectre",
@@ -273,7 +273,7 @@
       {
         "nameFr": "Spectro-Bouclier",
         "nameEn": "Shadow Shield",
-        "effectFr": "Le Pokémon subit moins de dégâts quand ses PV sont au maximum."
+        "descriptionFr": "Le Pokémon subit moins de dégâts quand ses PV sont au maximum."
       }
     ],
     "pokemonStats": {
