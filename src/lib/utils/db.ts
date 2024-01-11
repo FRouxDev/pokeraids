@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
-import { DB_URL } from '$env/static/private';
+import { MONGODB_URI } from '$env/static/private';
 
 const mongoConnection = {
   isConnected: 0,
 };
 
 export const dbConnect = async () => {
-  console.log('MONGO_URL', DB_URL);
+  console.log('MONGO_URL', MONGODB_URI);
   if (mongoConnection.isConnected === 1) {
     console.log('connexion déjà établie');
     return;
@@ -21,9 +21,9 @@ export const dbConnect = async () => {
 
     await mongoose.disconnect();
   }
-  await mongoose.connect(DB_URL ?? '');
+  await mongoose.connect(MONGODB_URI ?? '');
   mongoConnection.isConnected = 1;
-  console.log('connecté à mongodb', DB_URL ?? '');
+  console.log('connecté à mongodb', MONGODB_URI ?? '');
 };
 
 export const dbDisconnect = async () => {
