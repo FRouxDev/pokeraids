@@ -17,7 +17,6 @@
     if (!value && optionIndex >= 0) {
       selectedOptions.splice(optionIndex, 1);
     }
-    console.log(selectedOptions);
     selectedOptions = selectedOptions;
   }
 </script>

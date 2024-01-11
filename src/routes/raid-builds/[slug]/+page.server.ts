@@ -5,10 +5,10 @@ type BuildParams = {
   slug: string;
 };
 
-export function load({ params }: { params: BuildParams }) {
+export async function load({ params }: { params: BuildParams }) {
   const { slug } = params;
   if (slug) {
-    const build = findBuildById(slug);
+    const build = await findBuildById(slug);
     if (build) {
       return {
         build,

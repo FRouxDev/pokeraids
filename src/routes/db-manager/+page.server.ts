@@ -91,7 +91,6 @@ export const actions: Actions = {
         }
 
         console.log(pokemonId);
-        console.log(typedBuild);
 
         await RaidBuildModel.updateOne({ slug: typedBuild.slug }, typedBuild, {
           upsert: true,

@@ -3,14 +3,14 @@ import { findPokemonById } from '$lib/services/pokedex.service';
 import { error } from '@sveltejs/kit';
 
 type PokedexParams = {
-  pokeId: string;
+  slug: string;
 };
 
 export async function load({ params }: { params: PokedexParams }) {
-  const { pokeId } = params;
-  if (pokeId) {
-    const pokemon = await findPokemonById(pokeId);
-    const builds = await findBuildsByPokemonId(pokeId);
+  const { slug } = params;
+  if (slug) {
+    const pokemon = await findPokemonById(slug);
+    const builds = await findBuildsByPokemonId(slug);
     if (pokemon) {
       return {
         pokemon,

@@ -3,6 +3,7 @@ import { PokemonSpeciesModel, type PokemonSpecies } from '$lib/data/models/Pokem
 export const findPokemonById = async (pokemonId: string): Promise<PokemonSpecies | null> => {
   const pokemon = await PokemonSpeciesModel.findOne({ slug: pokemonId })
     .populate('abilities')
+    .populate('hiddenAbility')
     .lean();
   return structuredClone(pokemon);
 };

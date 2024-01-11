@@ -7,5 +7,5 @@
 </script>
 
 <PageLayout>
-  <Heading>{build.description}</Heading>
+  <Heading>{build.descriptionFr}</Heading>
 </PageLayout>
