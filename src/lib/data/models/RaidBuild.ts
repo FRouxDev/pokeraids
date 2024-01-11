@@ -8,6 +8,7 @@ import type { PokemonMove } from './Move';
 import type { PokemonSpecies } from './PokemonSpecies';
 
 export type RaidBuild = {
+  _id?: string;
   pokemon: PokemonSpecies;
   slug: string;
   descriptionFr: string;

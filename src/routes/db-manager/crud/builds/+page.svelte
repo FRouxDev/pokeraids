@@ -1,12 +1,17 @@
 <script lang="ts">
-  import FormButton from "$/components/base/formButton.svelte";
   import Heading from "$/components/base/heading.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   import Sidebar from "$/components/layout/sidebar/sidebar.svelte";
   import type { SidebarItem } from "$/components/layout/sidebar/sidebar.type";
+  import DbCollectionTable from "$/components/table/dbCollectionTable.svelte";
+  import type { RaidBuild } from "$/lib/data/models/RaidBuild";
+  export let data: { raidBuildsList: RaidBuild[] };
+  $: ({ raidBuildsList } = data);
 
-  export let data;
-  $: ({ abilitiesCount, pokemonCount, movesCount, buildsCount } = data);
+  type HeaderValue = {
+    label: string;
+    key: keyof RaidBuild;
+  };
 
   let sideMenu: SidebarItem[] = [
     { 
@@ -26,7 +31,24 @@
       target: '/db-manager/crud/builds',
     },
   ];
+
+  let headers: HeaderValue[] = [
+    {
+      label: 'Id',
+      key: '_id',
+    },
+    {
+      label: 'Description FR',
+      key: 'descriptionFr',
+    },
+    {
+      label: 'Description EN',
+      key: 'descriptionEn',
+    },
+  ]
 </script>
+
+
 <PageLayout>
   <Heading>Gestionnaire Database</Heading>
   <div class="flex flex-row gap-4">
@@ -34,26 +56,7 @@
       <Sidebar items={sideMenu} />
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
-      <p>Votre base de données comporte actuellement :</p>
-      <ul>
-        <li>{pokemonCount} espèces de Pokémon</li>
-        <li>{abilitiesCount} talents</li>
-        <li>{movesCount} attaques</li>
-        <li>{buildsCount} builds de raids</li>
-      </ul>
-      <div class="flex flex-row gap-2 mt-4">
-        <form method="POST" action="?/list-abilities">
-          <FormButton label="Synchro Talents" />
-        </form>
-        
-        <form method="POST" action="?/list-pokemon">
-          <FormButton label="Synchro Pokémon" />
-        </form>
-      
-        <form method="POST" action="?/list-builds">
-          <FormButton label="Synchro Builds" />
-        </form>
-      </div>
+      <DbCollectionTable headers={headers} itemsType="builds" rows={raidBuildsList} />
     </div>
   </div>
 </PageLayout>
