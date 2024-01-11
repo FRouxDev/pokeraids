@@ -28,4 +28,4 @@ export const AbilitySchema = new mongoose.Schema({
 });
 
 export const AbilityModel: Model<Ability> =
-  mongoose.models.Ability ?? mongoose.model<Ability>('Ability', AbilitySchema);
+  mongoose.models?.Ability ?? mongoose.model<Ability>('Ability', AbilitySchema);

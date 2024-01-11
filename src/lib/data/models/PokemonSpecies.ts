@@ -89,5 +89,5 @@ const PokemonSpeciesSchema = new mongoose.Schema({
 });
 
 export const PokemonSpeciesModel: Model<PokemonSpecies> =
-  mongoose.models.PokemonSpecies ??
+  mongoose.models?.PokemonSpecies ??
   mongoose.model<PokemonSpecies>('PokemonSpecies', PokemonSpeciesSchema);

@@ -1,20 +1,23 @@
-import type { RaidBuild } from '../data/models/RaidBuild';
-import type { PokemonType } from '$/shared/types/pokemonType.type';
-import type { RankingValue } from '$/shared/types/tierRanking.type';
-import buildsList from '$lib/data/builds.json';
+import { PokemonSpeciesModel } from '../data/models/PokemonSpecies';
+import { RaidBuildModel, type RaidBuild } from '../data/models/RaidBuild';
 
-const typedBuildList = buildsList.map((build) => {
-  const newBuild: Partial<RaidBuild> = {
-    ...build,
-    teraType: build.teraType as PokemonType,
-    ranking: {
-      solo: build.ranking.solo as RankingValue | undefined,
-      multiplayer: build.ranking.multiplayer as RankingValue | undefined,
-    },
-  };
-  return newBuild;
-});
+export const findBuildById = async (slug: string): Promise<RaidBuild | null> => {
+  const build = await RaidBuildModel.findOne({ slug })
+    .populate('ability')
+    .populate('pokemon')
+    .lean();
+  return structuredClone(build);
+};
 
-export const findBuildById = (slug: string): Partial<RaidBuild> | undefined => {
-  return typedBuildList.find((build) => build.slug === slug);
+export const findBuildsByPokemonId = async (pokemonId: string): Promise<RaidBuild[]> => {
+  const _id = (await PokemonSpeciesModel.findOne({ slug: pokemonId }).lean())?._id;
+  if (_id) {
+    const builds = await RaidBuildModel.find({ pokemon: _id })
+      .populate('ability')
+      .populate('pokemon')
+      .lean();
+    return structuredClone(builds);
+  }
+
+  return [];
 };

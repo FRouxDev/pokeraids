@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
-  import Heading from "$/components/base/heading.svelte";
+  import { type PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
   import TypeChip from "$/components/base/typeChip.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   import StatsTable from "$/components/table/statsTable.svelte";
-  import type { Pokemon } from "$/shared/types/pokemon.type";
   import BuildsTable from "$/components/table/buildsTable.svelte";
   import Tooltip from "$/components/base/tooltip.svelte";
+  import type { RaidBuild } from "$/lib/data/models/RaidBuild";
+  import Heading from "$/components/base/heading.svelte";
   type PokedexData = {
     pokemon: PokemonSpecies,
-    builds: Pokemon[]
+    builds: RaidBuild[]
   };
   export let data: PokedexData;
   $: pokemon = data.pokemon;
@@ -17,13 +17,13 @@
 
   type HeaderData = {
     label: string;
-    key: keyof Pokemon;
+    key: keyof RaidBuild;
   };
 
   let headers: HeaderData[] = [
     {
       label: 'Description',
-      key: 'description',
+      key: 'descriptionFr',
     },
     {
       label: 'Type Téracristal',

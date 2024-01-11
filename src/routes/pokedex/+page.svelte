@@ -2,7 +2,7 @@
   import Heading from "$/components/base/heading.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   import PokedexTable from "$/components/table/pokedexTable.svelte";
-  import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
+  import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies"; 
   export let data: { pokemonList: PokemonSpecies[] };
 
   type HeaderData = {

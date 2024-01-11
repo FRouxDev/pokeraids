@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PokemonSpecies } from "$/shared/types/pokemonSpecies.type";
+  import { type PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
   import TypeChip from "../base/typeChip.svelte";
   import { PokemonType } from "$/shared/types/pokemonType.type";
   import ChevronUpDown from "../icons/chevronUpDown.svelte";
@@ -108,7 +108,7 @@
     <th class="text-left px-2">Builds disponibles</th>
   </tr>
   {#each sortedRows as row}
-    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${row.id}`)}>
+    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${row.slug}`)}>
       <td class="first:rounded-l-lg py-2 pl-2"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
       {#each headers as header, i}
         {#if header.key === 'nameFr'}

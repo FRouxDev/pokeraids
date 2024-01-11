@@ -85,4 +85,4 @@ const RaidBuildSchema = new mongoose.Schema({
 });
 
 export const RaidBuildModel: Model<RaidBuild> =
-  mongoose.models.RaidBuild ?? mongoose.model<RaidBuild>('RaidBuild', RaidBuildSchema);
+  mongoose.models?.RaidBuild ?? mongoose.model<RaidBuild>('RaidBuild', RaidBuildSchema);

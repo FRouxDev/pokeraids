@@ -1,6 +1,6 @@
 import { getAllPokemon } from '$lib/services/pokedex.service';
 
-export function load() {
-  const pokemonList = getAllPokemon();
+export async function load() {
+  const pokemonList = await getAllPokemon();
   return { pokemonList };
 }

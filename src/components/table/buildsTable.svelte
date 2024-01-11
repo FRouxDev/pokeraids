@@ -1,7 +1,7 @@
 <script lang="ts">
   import { translateShortStat } from "$/lib/services/localize.service";
   import type { EvSpread } from "$/shared/types/evSpread.type";
-  import type { Pokemon } from "$/shared/types/pokemon.type";
+  import type { RaidBuild } from "$/lib/data/models/RaidBuild";
   import type { PokemonStats } from "$/shared/types/stats.type";
   import { goto } from "$app/navigation";
   import Tooltip from "../base/tooltip.svelte";
@@ -9,18 +9,19 @@
   import ChevronDown from "../icons/chevronDown.svelte";
   import ChevronUp from "../icons/chevronUp.svelte";
   import ChevronUpDown from "../icons/chevronUpDown.svelte";
+  import { removeIdFromKeyArray } from "$/lib/utils/removeIds";
 
   type HeaderValue = {
     label: string;
-    key: keyof Pokemon;
+    key: keyof RaidBuild;
   };
   type SortOrder = 'asc' | 'desc';
 
   export let headers: HeaderValue[];
-  export let rows: Pokemon[];
+  export let rows: RaidBuild[];
 
   let sortOrder: SortOrder = 'asc';
-  let currentSortKey: keyof Pokemon = 'pokemonId';
+  let currentSortKey: keyof RaidBuild = 'slug';
   $: sortValueInf = sortOrder === 'asc' ? -1 : 1;
   $: sortValueSup = sortOrder === 'asc' ? 1 : -1;
 
@@ -29,6 +30,7 @@
   const spreadFormatter = (spread: EvSpread) => {
     let spreadDisplay = '';
     const keys = Object.keys(spread);
+    removeIdFromKeyArray(keys);
     for (const [index, key] of keys.entries()) {
       spreadDisplay += `${spread[key as keyof EvSpread]} ${translateShortStat(key as keyof PokemonStats)}`;
       if (index < keys.length - 1) {

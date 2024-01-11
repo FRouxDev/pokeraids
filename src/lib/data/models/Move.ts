@@ -73,10 +73,12 @@ const StatusMoveSchema = new mongoose.Schema({
 });
 
 export const MoveModel: Model<PokemonMove> =
-  mongoose.models.Move ?? mongoose.model<PokemonMove>('PokemonMove', MoveSchema);
+  mongoose.models?.Move ?? mongoose.model<PokemonMove>('PokemonMove', MoveSchema);
 
 export const AttackMoveModel: Model<AttackMove> =
-  mongoose.models.AttackMove ?? MoveModel.discriminator<AttackMove>('AttackMove', AttackMoveSchema);
+  mongoose.models?.AttackMove ??
+  MoveModel.discriminator<AttackMove>('AttackMove', AttackMoveSchema);
 
 export const StatusMoveModel: Model<StatusMove> =
-  mongoose.models.StatusMove ?? MoveModel.discriminator<StatusMove>('StatusMove', StatusMoveSchema);
+  mongoose.models?.StatusMove ??
+  MoveModel.discriminator<StatusMove>('StatusMove', StatusMoveSchema);
