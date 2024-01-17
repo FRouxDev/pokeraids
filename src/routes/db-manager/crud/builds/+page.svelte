@@ -56,7 +56,7 @@
       <Sidebar items={sideMenu} />
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
-      <DbCollectionTable headers={headers} itemsType="builds" rows={raidBuildsList} />
+      <DbCollectionTable headers={headers} itemsType="builds" action="?/deleteRaidBuild" deleteName="itemId" rows={raidBuildsList} />
     </div>
   </div>
 </PageLayout>

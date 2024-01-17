@@ -14,6 +14,10 @@ export const getAllAbilities = async (): Promise<Ability[]> => {
   });
 };
 
+export const deleteAbility = async (abilityId: string): Promise<void> => {
+  await AbilityModel.deleteOne({ _id: abilityId });
+};
+
 export const getAllMoves = async (): Promise<PokemonMove[]> => {
   const movesList = await MoveModel.find().lean();
 

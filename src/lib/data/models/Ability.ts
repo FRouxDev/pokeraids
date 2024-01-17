@@ -23,7 +23,6 @@ export const AbilitySchema = new mongoose.Schema({
   },
   descriptionEn: {
     type: String,
-    required: true,
   },
 });
 

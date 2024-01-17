@@ -1,11 +1,14 @@
 <script lang="ts">
+  import ActionButton from "$/components/base/actionButton.svelte";
   import Heading from "$/components/base/heading.svelte";
+  import StatusBanner from "$/components/base/statusBanner.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
   import Sidebar from "$/components/layout/sidebar/sidebar.svelte";
   import type { SidebarItem } from "$/components/layout/sidebar/sidebar.type";
   import DbCollectionTable from "$/components/table/dbCollectionTable.svelte";
   import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
   export let data: { pokemonSpeciesList: PokemonSpecies[] };
+  export let form;
   $: ({ pokemonSpeciesList } = data);
 
   type HeaderValue = {
@@ -56,7 +59,9 @@
       <Sidebar items={sideMenu} />
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
-      <DbCollectionTable headers={headers} itemsType="builds" rows={pokemonSpeciesList} />
+      {#if form}<StatusBanner status="success" content="Espèce de Pokémon supprimée avec succès" />{/if}
+      <div class="my-2"><a href="./pokemon-species/new"><ActionButton action={() => {}} label="Nouveau Pokémon" /></a></div>
+      <DbCollectionTable headers={headers} action="?/deletePokemonSpecies" deleteName="itemId" itemsType="builds" rows={pokemonSpeciesList} />
     </div>
   </div>
 </PageLayout>

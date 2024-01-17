@@ -1,7 +1,5 @@
 <script lang="ts" generics="T">
   import FooterLink from "../layout/footer/footerLink.svelte";
-  import TypeChip from "../base/typeChip.svelte";
-  import { isStringPokemonType } from "$/shared/types/pokemonType.type";
 
   type HeaderValue = {
     label: string;
