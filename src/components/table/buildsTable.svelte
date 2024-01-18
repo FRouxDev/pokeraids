@@ -6,9 +6,9 @@
   import { goto } from "$app/navigation";
   import Tooltip from "../base/tooltip.svelte";
   import TypeChip from "../base/typeChip.svelte";
-  import ChevronDown from "../icons/chevronDown.svelte";
-  import ChevronUp from "../icons/chevronUp.svelte";
-  import ChevronUpDown from "../icons/chevronUpDown.svelte";
+  import ChevronDownIcon from "../icons/chevronDownIcon.svelte";
+  import ChevronUpIcon from "../icons/chevronUpIcon.svelte";
+  import ChevronUpDownIcon from "../icons/chevronUpDownIcon.svelte";
   import { removeIdFromKeyArray } from "$/lib/utils/removeIds";
 
   type HeaderValue = {
@@ -49,12 +49,12 @@
           <span class="w-4 h-4">
             {#if currentSortKey === header.key}
               {#if sortOrder === 'asc'}
-                <ChevronUp size={3} />
+                <ChevronUpIcon size={3} />
               {:else}
-                <ChevronDown size={3} />
+                <ChevronDownIcon size={3} />
               {/if}
             {:else}
-              <ChevronUpDown size={4} />
+              <ChevronUpDownIcon size={4} />
             {/if}
           </span>
           <span class="text-left">
