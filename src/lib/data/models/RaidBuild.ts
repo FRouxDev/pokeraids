@@ -4,18 +4,20 @@ import type { Role } from '$/shared/types/role.type';
 import type { TierRanking } from '$/shared/types/tierRanking.type';
 import mongoose, { Model } from 'mongoose';
 import type { Ability } from './Ability';
-import type { PokemonMove } from './Move';
+import type { Move } from './Move';
 import type { PokemonSpecies } from './PokemonSpecies';
+import { PokemonNature } from '$/shared/types/pokemonNature.type';
 
 export type RaidBuild = {
   _id?: string;
   pokemon: PokemonSpecies;
   slug: string;
+  labels: string[];
   descriptionFr: string;
   descriptionEn?: string;
   teraType: PokemonType;
   ability: Ability;
-  moveset?: PokemonMove[];
+  moveset?: Move[];
   evSpread: EvSpread;
   role?: Role;
   ranking: TierRanking;
@@ -39,6 +41,10 @@ const RaidBuildSchema = new mongoose.Schema({
   descriptionEn: {
     type: String,
   },
+  labels: {
+    type: [String],
+    required: true,
+  },
   teraType: {
     type: String,
     enum: PokemonType,
@@ -47,6 +53,16 @@ const RaidBuildSchema = new mongoose.Schema({
   ability: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Ability',
+    required: true,
+  },
+  moveset: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'PokemonMove',
+    required: true,
+  },
+  nature: {
+    type: String,
+    enum: PokemonNature,
     required: true,
   },
   evSpread: {
