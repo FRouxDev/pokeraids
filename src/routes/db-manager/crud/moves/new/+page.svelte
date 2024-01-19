@@ -3,12 +3,12 @@
   import Heading from '$/components/base/heading.svelte';
   import StatusBanner from '$/components/base/statusBanner.svelte';
   import NumberInput from '$/components/form/numberInput.svelte';
-  import type { SelectItem } from '$/components/form/select.svelte';
   import Select from '$/components/form/select.svelte';
   import TextArea from '$/components/form/textArea.svelte';
   import TextInput from '$/components/form/textInput.svelte';
   import PageLayout from '$/components/layout/pageLayout/pageLayout.svelte';
-  import { PokemonType } from '$/shared/types/pokemonType.type';
+  import type { SelectItem } from '$/shared/types/forms/select.types';
+  import { typesToValues } from '$/shared/utils/typesToValues';
 
   type FormFeedback = {
     success?: true;
@@ -26,12 +26,7 @@
   $: missingFields = form?.missing && Object.keys(form.missing).filter((key) => form?.missing?.[key as keyof typeof form.missing] === true);
   $: formError = missingFields && `Champs manquants : ${missingFields.join(', ')}`;
 
-  const typeValues: SelectItem[] = Object.values(PokemonType).filter((value) => value !== 'Stellaire').map((value) => {
-    return {
-      label: value,
-      value,
-    };
-  }).sort((t1, t2) => t1.label < t2.label ? -1 : 1);
+  const typeValues = typesToValues(true);
 
   const categoryValues: SelectItem[] = [
     {

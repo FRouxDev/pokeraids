@@ -2,14 +2,15 @@
   import FormButton from '$/components/base/formButton.svelte';
   import Heading from '$/components/base/heading.svelte';
   import StatusBanner from '$/components/base/statusBanner.svelte';
-  import type { SelectItem } from '$/components/form/select.svelte';
   import Select from '$/components/form/select.svelte';
   import TextInput from '$/components/form/textInput.svelte';
   import NumberInput from '$/components/form/numberInput.svelte';
   import PageLayout from '$/components/layout/pageLayout/pageLayout.svelte';
   import type { Ability } from '$/lib/data/models/Ability';
-  import { PokemonType } from '$/shared/types/pokemonType.type';
-  import { Origin } from '$/shared/types/origin.type';
+  import { typesToValues } from '$/shared/utils/typesToValues';
+  import { originsToValues } from '$/shared/utils/originsToValues';
+  import { addEmptyValue } from '$/shared/utils/addEmptyValue';
+  import { customTypeListToValues } from '$/shared/utils/customTypeToValues';
 
   type FormFeedback = {
     success?: true;
@@ -20,36 +21,16 @@
     };
   }
 
-  const EMPTY_ITEM: SelectItem = { label: '', value: ''};
-
   export let data: { abilitiesList: Ability[] };
   export let form: FormFeedback | undefined;
   $: missingFields = form?.missing && Object.keys(form.missing).filter((key) => form?.missing?.[key as keyof typeof form.missing] === true);
   $: formError = missingFields && `Champs manquants : ${missingFields.join(', ')}`;
-  $: abilitiesValues = data.abilitiesList.map((ability) => {
-    return {
-      label: ability.nameFr,
-      value: ability._id as string,
-    };
-  }).sort((a1, a2) => a1.label < a2.label ? -1 : 1);
-  $: abilitiesValuesWithEmpty = [EMPTY_ITEM, ...abilitiesValues]
+  $: abilitiesValues = customTypeListToValues<Ability>(data.abilitiesList, 'nameFr', '_id');
+  $: abilitiesValuesWithEmpty = addEmptyValue(abilitiesValues);
 
-
-  const typeValues: SelectItem[] = Object.values(PokemonType).filter((value) => value !== 'Stellaire').map((value) => {
-    return {
-      label: value,
-      value,
-    };
-  }).sort((t1, t2) => t1.label < t2.label ? -1 : 1);
-
-  const typeValuesWithEmpty: SelectItem[] = [EMPTY_ITEM, ...typeValues];
-
-  const originValues: SelectItem[] = Object.values(Origin).map((value) => {
-    return {
-      label: value,
-      value,
-    };
-  });
+  const typeValues = typesToValues(true);
+  const typeValuesWithEmpty = typesToValues(true, true);
+  const originValues = originsToValues();
 </script>
 
 <PageLayout>

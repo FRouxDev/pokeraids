@@ -1,11 +1,6 @@
-<script lang="ts" context="module">
-  export type SelectItem = {
-    label: string;
-    value: string;
-  };
-</script>
-
 <script lang="ts">
+  import type { SelectItem } from "$/shared/types/forms/select.types";
+
   export let id: string;
   export let name: string;
   export let label: string;
