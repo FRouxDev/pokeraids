@@ -64,6 +64,8 @@
         <div class="w-1/2">
           <TextInput label="Nom FR" id="nameFr" name="nameFr" placeholder="Nom en français" />
           <TextInput label="Nom EN" id="nameEn" name="nameEn" placeholder="Nom en anglais" />
+          <TextInput label="Forme FR" id="formFr" name="formFr" placeholder="Nom de forme en français" />
+          <TextInput label="Forme EN" id="formEn" name="formEn" placeholder="Nom de forme en anglais" />
           <TextInput label="Slug" id="slug" name="slug" placeholder="Identifiant" />
           <Select label="Région" id="origin" name="origin" items={originValues} />
         </div>

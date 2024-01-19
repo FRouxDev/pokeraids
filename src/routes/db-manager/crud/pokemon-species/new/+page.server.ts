@@ -14,6 +14,8 @@ export const actions: Actions = {
     const data = await request.formData();
     const nameFr = data.get('nameFr');
     const nameEn = data.get('nameEn');
+    const formFr = data.get('formFr');
+    const formEn = data.get('formEn');
     const slug = data.get('slug');
     const origin = data.get('origin');
     const type1 = data.get('type1');
@@ -47,6 +49,8 @@ export const actions: Actions = {
     const newPokemon = new PokemonSpeciesModel({
       nameFr,
       nameEn,
+      formFr: formFr || undefined,
+      formEn: formEn || undefined,
       slug,
       origin,
       type1,

@@ -9,6 +9,8 @@ export type PokemonSpecies = {
   slug: string;
   nameFr: string;
   nameEn: string;
+  formFr?: string;
+  formEn?: string;
   type1: PokemonType;
   type2?: PokemonType;
   picture?: string;
@@ -30,6 +32,12 @@ const PokemonSpeciesSchema = new mongoose.Schema({
   nameEn: {
     type: String,
     required: true,
+  },
+  formFr: {
+    type: String,
+  },
+  formEn: {
+    type: String,
   },
   type1: {
     type: String,

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { type PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
-  import TypeChip from "../base/typeChip.svelte";
+  import TypeChip from "../../base/typeChip.svelte";
   import { PokemonType } from "$/shared/types/pokemonType.type";
-  import ChevronUpDown from "../icons/chevronUpDown.svelte";
-  import ChevronUp from "../icons/chevronUp.svelte";
-  import ChevronDown from "../icons/chevronDown.svelte";
+  import ChevronUpDownIcon from "../../icons/chevronUpDownIcon.svelte";
+  import ChevronUpIcon from "../../icons/chevronUpIcon.svelte";
+  import ChevronDownIcon from "../../icons/chevronDownIcon.svelte";
   import { Origin } from "$/shared/types/origin.type";
-  import SelectMultiple from "../base/selectMultiple.svelte";
+  import SelectMultiple from "../../base/selectMultiple.svelte";
   import { goto } from "$app/navigation";
   import { removeAccents } from "$/lib/utils/removeAccent";
 
@@ -19,9 +19,9 @@
   export let headers: HeaderValue[];
   export let rows: PokemonSpecies[];
   
-  let activeTypeFilters: PokemonType[] = [];
+  export let activeTypeFilters: PokemonType[] = [];
   let activeNameFilter: string = '';
-  let activeRegionFilter: Origin[] = [];
+  export let activeRegionFilter: Origin[] = [];
   let sortOrder: SortOrder = 'asc';
   let currentSortKey: keyof PokemonSpecies = 'nameFr';
   $: sortValueInf = sortOrder === 'asc' ? -1 : 1;
@@ -77,11 +77,6 @@
   };
 </script>
 
-<div class="flex flex-row gap-2 mb-4">
-  <SelectMultiple label="Type :" options={Object.values(PokemonType)} bind:selectedOptions={activeTypeFilters} />
-  <SelectMultiple label="Région :" options={Object.values(Origin)} bind:selectedOptions={activeRegionFilter} />
-</div>
-
 <table class="table-auto w-full border-separate border-spacing-0">
   <tr class="h-10">
     <th></th>
@@ -91,12 +86,12 @@
           <span class="w-4 h-4">
             {#if currentSortKey === header.key}
               {#if sortOrder === 'asc'}
-                <ChevronUp size={3} />
+                <ChevronUpIcon size={3} />
               {:else}
-                <ChevronDown size={3} />
+                <ChevronDownIcon size={3} />
               {/if}
             {:else}
-              <ChevronUpDown size={4} />
+              <ChevronUpDownIcon size={4} />
             {/if}
           </span>
           <span class="text-left">
@@ -112,7 +107,11 @@
       <td class="first:rounded-l-lg py-2 pl-2"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
       {#each headers as header, i}
         {#if header.key === 'nameFr'}
-          <td class="w-80 pl-2 pr-1"><span class="font-semibold hover:text-pokeyellow">{row[header.key]}</span></td>
+          <td class="w-80 pl-2 pr-1">
+            <span class="font-semibold hover:text-pokeyellow">
+              {row.formFr ? `${row[header.key]} ${row.formFr}` : row[header.key]}
+            </span>
+          </td>
         {:else if (row[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
           <td class="w-24 pb-1 align-middle"><TypeChip pokemonType={row[header.key]} /></td>
         {:else}

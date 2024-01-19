@@ -1,6 +1,5 @@
 <script lang="ts">
-  import ChevronDown from "$/components/icons/chevronDown.svelte";
-import { clickOutside } from "$/lib/custom/clickOutside";
+  import { clickOutside } from "$/lib/custom/clickOutside";
   import type { LinkItem } from "./navbar.type";
   export let items: LinkItem[];
   export let label: string;
