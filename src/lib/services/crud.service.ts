@@ -1,5 +1,5 @@
 import { AbilityModel, type Ability } from '$lib/data/models/Ability';
-import { MoveModel, type PokemonMove } from '../data/models/Move';
+import { MoveModel, type Move } from '../data/models/Move';
 import { PokemonSpeciesModel, type PokemonSpecies } from '../data/models/PokemonSpecies';
 import { RaidBuildModel, type RaidBuild } from '../data/models/RaidBuild';
 
@@ -16,17 +16,6 @@ export const getAllAbilities = async (): Promise<Ability[]> => {
 
 export const deleteAbility = async (abilityId: string): Promise<void> => {
   await AbilityModel.deleteOne({ _id: abilityId });
-};
-
-export const getAllMoves = async (): Promise<PokemonMove[]> => {
-  const movesList = await MoveModel.find().lean();
-
-  return movesList.map((move) => {
-    return {
-      ...move,
-      _id: move._id.toString(),
-    };
-  });
 };
 
 export const getAllPokemonSpecies = async (): Promise<PokemonSpecies[]> => {
@@ -53,4 +42,19 @@ export const getAllRaidBuilds = async (): Promise<RaidBuild[]> => {
       };
     }),
   );
+};
+
+export const getAllMoves = async (): Promise<Move[]> => {
+  const movesList = await MoveModel.find().lean();
+
+  return movesList.map((move) => {
+    return {
+      ...move,
+      _id: move._id.toString(),
+    };
+  });
+};
+
+export const deleteMove = async (moveId: string): Promise<void> => {
+  await MoveModel.deleteOne({ _id: moveId });
 };

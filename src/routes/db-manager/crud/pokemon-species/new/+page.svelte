@@ -40,7 +40,7 @@
       label: value,
       value,
     };
-  }).sort((t1, t2) => t1.label < t2.label ? -1 : 1);;
+  }).sort((t1, t2) => t1.label < t2.label ? -1 : 1);
 
   const typeValuesWithEmpty: SelectItem[] = [EMPTY_ITEM, ...typeValues];
 

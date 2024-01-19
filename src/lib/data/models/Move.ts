@@ -21,6 +21,8 @@ export type StatusMove = PokemonMove & {
   category: 'status';
 };
 
+export type Move = AttackMove | StatusMove;
+
 const MoveSchema = new mongoose.Schema({
   nameFr: {
     type: String,
@@ -72,8 +74,8 @@ const StatusMoveSchema = new mongoose.Schema({
   },
 });
 
-export const MoveModel: Model<PokemonMove> =
-  mongoose.models?.Move ?? mongoose.model<PokemonMove>('PokemonMove', MoveSchema);
+export const MoveModel: Model<Move> =
+  mongoose.models?.Move ?? mongoose.model<Move>('PokemonMove', MoveSchema);
 
 export const AttackMoveModel: Model<AttackMove> =
   mongoose.models?.AttackMove ??

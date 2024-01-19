@@ -19,6 +19,7 @@ export type RaidBuild = {
   evSpread: EvSpread;
   role?: Role;
   ranking: TierRanking;
+  youtubeLink?: string;
 };
 
 const RaidBuildSchema = new mongoose.Schema({
@@ -82,6 +83,9 @@ const RaidBuildSchema = new mongoose.Schema({
         enum: ['S', 'A', 'B', 'C', 'D'],
       },
     },
+  },
+  youtube: {
+    type: String,
   },
 });
 
