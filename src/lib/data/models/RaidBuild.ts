@@ -12,7 +12,7 @@ export type RaidBuild = {
   _id?: string;
   pokemon: PokemonSpecies;
   slug: string;
-  labels: string[];
+  labels?: string[];
   descriptionFr: string;
   descriptionEn?: string;
   teraType: PokemonType;

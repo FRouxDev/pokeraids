@@ -4,6 +4,7 @@
   export let placeholder: string;
   export let label: string;
   export let rows: number;
+  export let value: string | undefined = undefined;
 </script>
 
 <label class="block text-gray-100 text-sm font-semibold my-2" for={id}>
@@ -15,4 +16,5 @@
   name={name}
   placeholder={placeholder}
   rows={rows}
+  bind:value={value}
 ></textarea>
