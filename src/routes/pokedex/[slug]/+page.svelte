@@ -23,7 +23,7 @@
   let headers: HeaderData[] = [
     {
       label: 'Description',
-      key: 'descriptionFr',
+      key: 'nameFr',
     },
     {
       label: 'Type Téracristal',

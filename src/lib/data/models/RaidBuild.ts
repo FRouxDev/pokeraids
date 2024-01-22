@@ -1,28 +1,29 @@
-import type { EvSpread } from '$/shared/types/evSpread.type';
 import { PokemonType } from '$/shared/types/pokemonType.type';
-import type { Role } from '$/shared/types/role.type';
 import type { TierRanking } from '$/shared/types/tierRanking.type';
 import mongoose, { Model } from 'mongoose';
-import type { Ability } from './Ability';
-import type { Move } from './Move';
-import type { PokemonSpecies } from './PokemonSpecies';
 import { PokemonNature } from '$/shared/types/pokemonNature.type';
+import type { MongooseEntity } from '$/shared/types/data/mongooseEntity.type';
+import type { EvSpread } from '$/shared/types/evSpread.type';
 
-export type RaidBuild = {
-  _id?: string;
-  pokemon: PokemonSpecies;
+export type RaidBuildDto = {
+  pokemon: string;
   slug: string;
   labels?: string[];
+  nameFr: string;
+  nameEn?: string;
   descriptionFr: string;
   descriptionEn?: string;
-  teraType: PokemonType;
-  ability: Ability;
-  moveset?: Move[];
+  teraType: string;
+  ability: string;
+  nature: string;
+  moveset?: string[];
   evSpread: EvSpread;
-  role?: Role;
+  role?: string;
   ranking: TierRanking;
   youtubeLink?: string;
 };
+
+export type RaidBuild = MongooseEntity<RaidBuildDto>;
 
 const RaidBuildSchema = new mongoose.Schema({
   slug: {
@@ -33,6 +34,13 @@ const RaidBuildSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'PokemonSpecies',
     required: true,
+  },
+  nameFr: {
+    type: String,
+    required: true,
+  },
+  nameEn: {
+    type: String,
   },
   descriptionFr: {
     type: String,

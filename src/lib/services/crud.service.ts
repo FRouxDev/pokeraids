@@ -1,7 +1,7 @@
 import { AbilityModel, type Ability } from '$lib/data/models/Ability';
 import { MoveModel, type Move } from '../data/models/Move';
 import { PokemonSpeciesModel, type PokemonSpecies } from '../data/models/PokemonSpecies';
-import { RaidBuildModel, type RaidBuild } from '../data/models/RaidBuild';
+import { RaidBuildModel, type RaidBuild, type RaidBuildDto } from '../data/models/RaidBuild';
 
 export const getAllAbilities = async (): Promise<Ability[]> => {
   const abilitiesList = await AbilityModel.find().lean();
@@ -42,6 +42,11 @@ export const getAllRaidBuilds = async (): Promise<RaidBuild[]> => {
       };
     }),
   );
+};
+
+export const createBuild = async (build: RaidBuildDto): Promise<void> => {
+  const newBuild = new RaidBuildModel<RaidBuildDto>(build);
+  await newBuild.save();
 };
 
 export const getAllMoves = async (): Promise<Move[]> => {
