@@ -1,13 +1,16 @@
 <script lang="ts">
   import Heading from "$/components/base/heading.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
+  import SeoHead from "$/components/seo/seoHead.svelte";
   import PokedexGrid from "$/components/table/pokedexTable/pokedexGrid/pokedexGrid.svelte";
   import PokedexTable from "$/components/table/pokedexTable/pokedexTable.svelte";
   import PokedexTableFilters from "$/components/table/pokedexTable/pokedexTableFilters.svelte";
   import PokedexViewToggle from "$/components/table/pokedexTable/pokedexViewToggle.svelte";
+  import { page } from '$app/stores';
   import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies"; 
   import type { Origin } from "$/shared/types/origin.type";
   import type { PokemonType } from "$/shared/types/pokemonType.type";
+
   export let data: { pokemonList: PokemonSpecies[] };
   let activeTypeFilters: PokemonType[] = [];
   let activeRegionFilter: Origin[] = [];
@@ -37,6 +40,12 @@
     }
   ];
 </script>
+
+<SeoHead 
+  pageName="Pokédex"
+  description="Retrouvez sur cette page la liste des Pokémon disposant de builds de raids sur PokéRaids."
+  path={$page.url.pathname} 
+/>
 
 <PageLayout>
   <Heading>Pokédex</Heading>
