@@ -1,4 +1,5 @@
 import { AbilityModel, type Ability } from '$lib/data/models/Ability';
+import { ItemModel, type Item } from '../data/models/Item';
 import { MoveModel, type Move } from '../data/models/Move';
 import { PokemonSpeciesModel, type PokemonSpecies } from '../data/models/PokemonSpecies';
 import { RaidBuildModel, type RaidBuild, type RaidBuildDto } from '../data/models/RaidBuild';
@@ -10,6 +11,21 @@ export const getAllAbilities = async (): Promise<Ability[]> => {
     return {
       ...ability,
       _id: ability._id.toString(),
+    };
+  });
+};
+
+export const deleteItem = async (itemId: string): Promise<void> => {
+  await ItemModel.deleteOne({ _id: itemId });
+};
+
+export const getAllItems = async (): Promise<Item[]> => {
+  const itemsList = await ItemModel.find().lean();
+
+  return itemsList.map((item) => {
+    return {
+      ...item,
+      _id: item._id.toString(),
     };
   });
 };
