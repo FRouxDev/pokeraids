@@ -6,9 +6,10 @@
   import ChevronUpIcon from "../../icons/chevronUpIcon.svelte";
   import ChevronDownIcon from "../../icons/chevronDownIcon.svelte";
   import { Origin } from "$/shared/types/origin.type";
-  import SelectMultiple from "../../base/selectMultiple.svelte";
   import { goto } from "$app/navigation";
   import { removeAccents } from "$/lib/utils/removeAccent";
+  import type { EnrichedPokemonSpecies } from "$/lib/services/pokedex.service";
+  import { plurals } from "$/lib/utils/plurals";
 
   type HeaderValue = {
     label: string;
@@ -17,7 +18,7 @@
   type SortOrder = 'asc' | 'desc';
 
   export let headers: HeaderValue[];
-  export let rows: PokemonSpecies[];
+  export let rows: EnrichedPokemonSpecies[];
   
   export let activeTypeFilters: PokemonType[] = [];
   let activeNameFilter: string = '';
@@ -29,8 +30,8 @@
   $: filteredRows = (activeNameFilter || activeTypeFilters.length > 0 || activeRegionFilter.length > 0) ? filterRows() : rows;
 
   $: sortedRows = [...filteredRows].sort((pkmn1, pkmn2) => {
-    const value1 = pkmn1[currentSortKey];
-    const value2 = pkmn2[currentSortKey];
+    const value1 = pkmn1.pokemon[currentSortKey];
+    const value2 = pkmn2.pokemon[currentSortKey];
 
     // TODO: Refacto
     if (value1 !== undefined && value2 !== undefined) {
@@ -63,13 +64,14 @@
 
   const filterRows = () => {
     return rows.filter((row) => {
-      if (activeNameFilter && row.nameFr.includes(activeNameFilter) === false) {
+      const { pokemon } = row;
+      if (activeNameFilter && pokemon.nameFr.includes(activeNameFilter) === false) {
         return false;
       }
-      if (activeTypeFilters.length > 0 && (activeTypeFilters.includes(row.type1) === false) && (!row.type2 || activeTypeFilters.includes(row.type2) === false)) {
+      if (activeTypeFilters.length > 0 && (activeTypeFilters.includes(pokemon.type1) === false) && (!pokemon.type2 || activeTypeFilters.includes(pokemon.type2) === false)) {
         return false;
       }
-      if (activeRegionFilter.length > 0 && (activeRegionFilter.includes(row.origin) === false)) {
+      if (activeRegionFilter.length > 0 && (activeRegionFilter.includes(pokemon.origin) === false)) {
         return false;
       }
       return true;
@@ -103,22 +105,23 @@
     <th class="text-left px-2">Builds disponibles</th>
   </tr>
   {#each sortedRows as row}
-    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${row.slug}`)}>
-      <td class="first:rounded-l-lg py-2 pl-2"><img src={`/sprites/${row.picture}`} alt={row.nameFr} class="w-12 h-12"/></td>
-      {#each headers as header, i}
+    {@const { pokemon, buildsCount } = row}
+    <tr class="h-10 hover:bg-background-dark cursor-pointer" on:click={() => goto(`${POKEDEX_BASE_URL}/${pokemon.slug}`)}>
+      <td class="first:rounded-l-lg py-2 pl-2"><img src={`/sprites/${pokemon.picture}`} alt={pokemon.nameFr} class="w-12 h-12"/></td>
+      {#each headers as header}
         {#if header.key === 'nameFr'}
           <td class="w-80 pl-2 pr-1">
             <span class="font-semibold hover:text-pokeyellow">
-              {row.formFr ? `${row[header.key]} ${row.formFr}` : row[header.key]}
+              {pokemon.formFr ? `${pokemon[header.key]} ${pokemon.formFr}` : pokemon[header.key]}
             </span>
           </td>
-        {:else if (row[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
-          <td class="w-24 pb-1 align-middle"><TypeChip pokemonType={row[header.key]} /></td>
+        {:else if (pokemon[header.key] !== undefined && (header.key === 'type1' || header.key === 'type2'))}
+          <td class="w-24 pb-1 align-middle"><TypeChip pokemonType={pokemon[header.key]} /></td>
         {:else}
-          <td class="px-2">{row[header.key] || ''}</td>
+          <td class="px-2">{pokemon[header.key] || ''}</td>
         {/if}
       {/each}
-      <td class="pl-2 last:pr-3 last:rounded-r-lg text-sm">0 build(s) disponible(s)</td>
+      <td class="pl-2 last:pr-3 last:rounded-r-lg text-sm">{ buildsCount } build{plurals(buildsCount)} disponible{plurals(buildsCount)}</td>
     </tr>
   {/each}
 </table>

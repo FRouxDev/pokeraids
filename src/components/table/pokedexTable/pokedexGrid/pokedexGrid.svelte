@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
+  import type { EnrichedPokemonSpecies } from "$/lib/services/pokedex.service";
   import PokedexCard from "./pokedexCard.svelte";
-  export let rows: PokemonSpecies[];
+  export let rows: EnrichedPokemonSpecies[];
 </script>
 
 <div class="grid grid-cols-3 gap-2">
-  {#each rows as pokemon}  
-    <PokedexCard pokemon={pokemon} />
+  {#each rows as row}
+    {@const { pokemon, buildsCount } = row}  
+    <PokedexCard pokemon={pokemon} buildsCount={buildsCount} />
   {/each}
 </div>

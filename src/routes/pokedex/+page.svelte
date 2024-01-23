@@ -10,8 +10,9 @@
   import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies"; 
   import type { Origin } from "$/shared/types/origin.type";
   import type { PokemonType } from "$/shared/types/pokemonType.type";
+  import type { EnrichedPokemonSpecies } from "$/lib/services/pokedex.service";
 
-  export let data: { pokemonList: PokemonSpecies[] };
+  export let data: { pokemonList: EnrichedPokemonSpecies[] };
   let activeTypeFilters: PokemonType[] = [];
   let activeRegionFilter: Origin[] = [];
   let displayMode: 'grid' | 'list' = 'grid';

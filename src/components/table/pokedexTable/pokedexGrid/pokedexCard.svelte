@@ -2,6 +2,7 @@
   import Heading from "$/components/base/heading.svelte";
   import TypeChip from "$/components/base/typeChip.svelte";
   import type { PokemonSpecies } from "$/lib/data/models/PokemonSpecies";
+  import { plurals } from "$/lib/utils/plurals";
 
   export let pokemon: PokemonSpecies;
   export let buildsCount: number = 0;
@@ -24,7 +25,7 @@
       {/if}
       </div>
       <div>{pokemon.origin}</div>
-      <div>{buildsCount} builds disponibles</div>
+      <div>{buildsCount} build{plurals(buildsCount)} disponible{plurals(buildsCount)}</div>
     </div>
   </div>
 </a>
