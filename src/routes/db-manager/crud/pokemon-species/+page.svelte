@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ActionButton from "$/components/base/actionButton.svelte";
+  import FormButton from "$/components/base/formButton.svelte";
   import Heading from "$/components/base/heading.svelte";
   import StatusBanner from "$/components/base/statusBanner.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
@@ -40,7 +40,7 @@
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
       {#if form}<StatusBanner status="success" content="Espèce de Pokémon supprimée avec succès" />{/if}
-      <div class="my-2"><a href="./pokemon-species/new"><ActionButton action={() => {}} label="Nouveau Pokémon" /></a></div>
+      <div class="my-2"><a href="./pokemon-species/new"><FormButton label="Nouveau Pokémon" type="button" /></a></div>
       <DbCollectionTable headers={headers} action="?/deletePokemonSpecies" deleteName="itemId" itemsType="builds" rows={pokemonSpeciesList} />
     </div>
   </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ActionButton from "$/components/base/actionButton.svelte";
+  import FormButton from "$/components/base/formButton.svelte";
   import Heading from "$/components/base/heading.svelte";
   import StatusBanner from "$/components/base/statusBanner.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
@@ -39,7 +39,7 @@
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
       {#if form}<StatusBanner status="success" content="Build supprimé avec succès" />{/if}
-      <div class="my-2"><a href="./builds/new"><ActionButton action={() => {}} label="Nouveau Build" /></a></div>
+      <div class="my-2"><a href="./builds/new"><FormButton label="Nouveau Build" type="button" /></a></div>
       <DbCollectionTable headers={headers} itemsType="builds" action="?/deleteRaidBuild" deleteName="itemId" rows={raidBuildsList} />
     </div>
   </div>

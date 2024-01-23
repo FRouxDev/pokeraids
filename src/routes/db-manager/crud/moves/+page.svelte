@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ActionButton from "$/components/base/actionButton.svelte";
+  import FormButton from "$/components/base/formButton.svelte";
   import Heading from "$/components/base/heading.svelte";
   import StatusBanner from "$/components/base/statusBanner.svelte";
   import PageLayout from "$/components/layout/pageLayout/pageLayout.svelte";
@@ -39,7 +39,7 @@
     </div>
     <div class="bg-background-light p-4 rounded mb-4 mt-8 w-full">
       {#if form && 'success' in form && form.success}<StatusBanner status="success" content="Attaque supprimé avec succès" />{/if}
-      <div class="my-2"><a href="./moves/new"><ActionButton action={() => {}} label="Nouvelle attaque" /></a></div>
+      <div class="my-2"><a href="./moves/new"><FormButton label="Nouvelle attaque" type="button" /></a></div>
       <DbCollectionTable headers={headers} itemsType="moves" action="?/deleteMove" deleteName="itemId" rows={movesList} />
     </div>
   </div>
