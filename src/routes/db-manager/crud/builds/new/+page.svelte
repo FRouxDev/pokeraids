@@ -13,6 +13,7 @@
   import type { Move } from "$/lib/data/models/Move";
   import TextArea from "$/components/form/textArea.svelte";
   import { naturesToValues } from "$/shared/utils/naturesToValues";
+  import type { Item } from "$/lib/data/models/Item";
   
   type FormFeedback = {
     success?: true;
@@ -23,13 +24,14 @@
     };
   }
 
-  export let data: { abilitiesList: Ability[], pokemonList: PokemonSpecies[], moveList: Move[] };
+  export let data: { abilitiesList: Ability[], pokemonList: PokemonSpecies[], moveList: Move[], itemsList: Item[] };
   export let form: FormFeedback | undefined;
   $: missingFields = form?.missing && Object.keys(form.missing).filter((key) => form?.missing?.[key as keyof typeof form.missing] === true);
   $: formError = missingFields && `Champs manquants : ${missingFields.join(', ')}`;
   $: abilitiesValues = customTypeListToValues<Ability>(data.abilitiesList, 'nameFr', '_id');
   $: pokemonValues = customTypeListToValues<PokemonSpecies>(data.pokemonList, 'nameFr', '_id');
   $: moveValues = customTypeListToValues<Move>(data.moveList, 'nameFr', '_id');
+  $: itemsValues = customTypeListToValues<Item>(data.itemsList, 'nameFr', '_id');
 
   const typeValues = typesToValues(false);
   const natureValues = naturesToValues(false);
@@ -56,6 +58,7 @@
           <Select label="Pokémon" id="pokemon" name="pokemon" items={pokemonValues} />
           <Select label="Tera Type" id="teraType" name="teraType" items={typeValues} />
           <Select label="Talent" id="ability" name="ability" items={abilitiesValues} />
+          <Select label="Objet" id="item" name="item" items={itemsValues} />
           <Select label="Nature" id="nature" name="nature" items={natureValues} />
         </div>
         <hr class="mt-4 mb-2" />

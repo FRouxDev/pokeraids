@@ -15,6 +15,7 @@ export type RaidBuildDto = {
   descriptionEn?: string;
   teraType: string;
   ability: string;
+  item: string;
   nature: string;
   moveset?: string[];
   evSpread: EvSpread;
@@ -61,6 +62,11 @@ const RaidBuildSchema = new mongoose.Schema({
   ability: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Ability',
+    required: true,
+  },
+  item: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Item',
     required: true,
   },
   moveset: {

@@ -1,6 +1,7 @@
 import {
   createBuild,
   getAllAbilities,
+  getAllItems,
   getAllMoves,
   getAllPokemonSpecies,
 } from '$/lib/services/crud.service';
@@ -15,7 +16,8 @@ export async function load() {
   const abilitiesList = await getAllAbilities();
   const pokemonList = await getAllPokemonSpecies();
   const moveList = await getAllMoves();
-  return { abilitiesList, pokemonList, moveList };
+  const itemsList = await getAllItems();
+  return { abilitiesList, pokemonList, moveList, itemsList };
 }
 
 export const actions: Actions = {
@@ -32,6 +34,7 @@ export const actions: Actions = {
     const pokemon = parseData(data.get('pokemon'));
     const teraType = parseData(data.get('teraType'));
     const ability = parseData(data.get('ability'));
+    const item = parseData(data.get('item'));
     const nature = parseData(data.get('nature'));
     const move1 = parseData(data.get('move_1'));
     const move2 = parseData(data.get('move_2'));
@@ -59,6 +62,7 @@ export const actions: Actions = {
       markRequired(pokemon) &&
       markRequired(teraType) &&
       markRequired(ability) &&
+      markRequired(item) &&
       markRequired(nature) &&
       markRequired(move1) &&
       markRequired(move2) &&
@@ -74,6 +78,7 @@ export const actions: Actions = {
         descriptionEn,
         teraType,
         ability,
+        item,
         nature,
         moveset: [move1, move2, move3, move4],
         evSpread: {
