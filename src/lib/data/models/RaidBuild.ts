@@ -4,6 +4,9 @@ import mongoose, { Model } from 'mongoose';
 import { PokemonNature } from '$/shared/types/pokemonNature.type';
 import type { MongooseEntity } from '$/shared/types/data/mongooseEntity.type';
 import type { EvSpread } from '$/shared/types/evSpread.type';
+import type { Ability } from './Ability';
+import type { PokemonSpecies } from './PokemonSpecies';
+import type { Item } from './Item';
 
 export type RaidBuildDto = {
   pokemon: string;
@@ -13,7 +16,7 @@ export type RaidBuildDto = {
   nameEn?: string;
   descriptionFr: string;
   descriptionEn?: string;
-  teraType: string;
+  teraType: PokemonType;
   ability: string;
   item: string;
   nature: string;
@@ -24,7 +27,12 @@ export type RaidBuildDto = {
   youtubeLink?: string;
 };
 
-export type RaidBuild = MongooseEntity<RaidBuildDto>;
+export type RaidBuild = MongooseEntity<RaidBuildDto> & {
+  pokemon: PokemonSpecies;
+  ability: Ability;
+  nature: PokemonNature;
+  item: Item;
+};
 
 const RaidBuildSchema = new mongoose.Schema({
   slug: {

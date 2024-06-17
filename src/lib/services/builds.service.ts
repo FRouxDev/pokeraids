@@ -5,6 +5,8 @@ export const findBuildById = async (slug: string): Promise<RaidBuild | null> => 
   const build = await RaidBuildModel.findOne({ slug })
     .populate('ability')
     .populate('pokemon')
+    .populate('item')
+    .populate('moveset')
     .lean();
   return structuredClone(build);
 };
